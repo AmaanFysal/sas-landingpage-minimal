@@ -186,27 +186,6 @@ body {
   -webkit-box-decoration-break: clone;
 }
 
-/* Section 05 loop: the arc to the next step draws itself (the only motion on the page). */
-@keyframes loop-draw {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.loop-arc {
-  stroke-dasharray: 1;
-  animation: loop-draw 1.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .loop-arc {
-    animation: none;
-  }
-}
-
 /*
  * Section numbers roll in once on scroll (fin.ai homepage timing and easing).
  * Hidden only when scripting is on, so the numbers still show without JS,
