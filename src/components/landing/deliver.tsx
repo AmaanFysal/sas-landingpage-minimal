@@ -1,5 +1,5 @@
 import { deliver } from "@/content/site";
-import { PageGrid } from "./layout";
+import { PageGrid, TABLET_MAX } from "./layout";
 import { CountUp } from "./count-up";
 import { Square } from "./marks";
 
@@ -23,13 +23,13 @@ export function Deliver() {
             borders). Each leads with the result (title), then the number that
             proves it and its caption, a rule, and the line explaining how (owner
             request). Columns share rows (subgrid) so numbers, rules and lines
-            align across the row. Stacked, with space between, below 1024px.
+            align across the row. Stacked, with space between, below 1280px.
           */}
-          <ul className="mt-12 grid gap-y-14 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_auto] lg:gap-y-0">
+          <ul className={`mt-12 grid gap-y-14 xl:grid-cols-3 xl:grid-rows-[auto_auto_auto_auto] xl:gap-y-0 ${TABLET_MAX}`}>
             {deliver.cards.map((card) => (
               <li
                 key={card.title}
-                className="flex flex-col lg:row-span-4 lg:grid lg:grid-rows-subgrid lg:border-l lg:border-ink/10 lg:px-8 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0"
+                className="flex flex-col xl:row-span-4 xl:grid xl:grid-rows-subgrid xl:border-l xl:border-ink/10 xl:px-8 xl:first:border-l-0 xl:first:pl-0 xl:last:pr-0"
               >
                 <h3 className="t-card text-sky-ink">{card.title}</h3>
                 <p className="t-stat mt-6">

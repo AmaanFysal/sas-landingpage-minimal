@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { airIntelligence, ecosystem, occupancy, proofOfConcept, standards } from "@/content/site";
 import { WithAiName } from "./ai-name";
-import { Reason, Sheet } from "./layout";
+import { Reason, Sheet, TABLET_MAX } from "./layout";
 import { LoopDiagram } from "./loop-diagram";
 import { CornerMarks, Square } from "./marks";
 import { ResetMark, WellMark } from "./seals";
@@ -29,9 +29,9 @@ export function NumberedSections() {
 function Ecosystem() {
   return (
     <Reason id="solution-ecosystem" number="01" title={ecosystem.title}>
-      <div className="relative mt-10 bg-chalk p-4">
+      <div className={`relative mt-10 bg-chalk p-4 ${TABLET_MAX}`}>
         <CornerMarks />
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 xl:grid-cols-3">
           {ecosystem.cards.map((card, i) => (
             <article key={card.id} id={card.id} className="scroll-mt-6 bg-sheet p-6">
               <p className="t-label text-ink/60">1.{i + 1}</p>
@@ -68,13 +68,13 @@ function ProofOfConcept() {
   return (
     <Reason id="proof-of-concept" number="02" title={proofOfConcept.title} className="bg-band-sky">
       <p className="t-body-lg mt-4 max-w-[572px]">{proofOfConcept.intro}</p>
-      <div className="mt-10 grid grid-cols-10 gap-x-4">
-        <div className="col-span-10 grid gap-4 lg:col-span-8 lg:col-start-2 lg:grid-cols-3 lg:gap-0">
+      <div className={`mt-10 grid grid-cols-10 gap-x-4 ${TABLET_MAX}`}>
+        <div className="col-span-10 grid gap-4 xl:col-span-8 xl:col-start-2 xl:grid-cols-3 xl:gap-0">
           {proofOfConcept.stats.map((stat, i) => (
             <article
               key={stat.id}
               id={stat.id}
-              className="relative flex scroll-mt-6 flex-col justify-between gap-12 bg-sheet/70 p-6 backdrop-blur-[24px] lg:min-h-[316px]"
+              className="relative flex scroll-mt-6 flex-col justify-between gap-12 bg-sheet/70 p-6 backdrop-blur-[24px] xl:min-h-[316px]"
             >
               <CornerMarks className="bg-ink/20" />
               <div>
@@ -125,13 +125,13 @@ function Occupancy() {
   const [before, after] = occupancy.body.split(occupancy.highlight);
   return (
     <Reason id="occupancy" number="04" title={occupancy.title}>
-      <div className="bg-quote relative mt-10 grid grid-cols-10 gap-x-4 px-6 py-10 md:px-0 md:py-12">
+      <div className={`bg-quote relative mt-10 grid grid-cols-10 gap-x-4 px-6 py-10 xl:px-0 xl:py-12 ${TABLET_MAX}`}>
         <CornerMarks />
-        <p className="t-label col-span-10 flex items-center gap-2.5 text-sky-ink md:col-start-2">
+        <p className="t-label col-span-10 flex items-center gap-2.5 text-sky-ink xl:col-start-2">
           <Square />
           {occupancy.eyebrow}
         </p>
-        <p className="t-quote col-span-10 mt-10 md:col-span-5 md:col-start-3">
+        <p className="t-quote col-span-10 mt-10 xl:col-span-5 xl:col-start-3">
           {before}
           <mark className="mark-sky">{occupancy.highlight}</mark>
           {after}
@@ -170,9 +170,6 @@ function AirIntelligence() {
         />
       }
       aside={<LoopDiagram />}
-      // Diagram under the text on phones and tablets (owner request), beside it
-      // from 1280px, where the hero also moves its render beside the text.
-      asideFrom="xl"
     >
       <div className="mt-4 space-y-4">
         {airIntelligence.paragraphs.map((p) => (
@@ -182,7 +179,7 @@ function AirIntelligence() {
         ))}
       </div>
       {/* Reserved for a future partner quote. */}
-      <hr className="mt-12 border-white/15 xl:mt-auto" />
+      <hr className={`mt-12 w-full border-white/15 xl:mt-auto ${TABLET_MAX}`} />
     </Reason>
   );
 }
