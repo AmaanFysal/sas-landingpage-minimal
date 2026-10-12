@@ -137,9 +137,9 @@ Owner-supplied copy, not in the source HTML. Sits between Occupancy and the foot
 - Naming: always "Air Intelligence" / "SAS Air Intelligence"; never "AirCrew".
 
 ### Section 7: Footer
-- H2: `Sterilised Air Solutions`
+- H2 (source): `Sterilised Air Solutions`. **Replaced by the owner on 12 Oct 2026** with two lines around the 3D object: `Safer air, fuller care homes` / `made possible with SAS`.
 - Body: `Our complete web presence is launching soon. For information regarding the West London PoC or waitlist opportunities, reach out below.`
-- Button: `Contact Our Team` → `mailto:info@sterilisedairsolutions.co.uk`
+- Button (source): `Contact Our Team` → `mailto:info@sterilisedairsolutions.co.uk`. **Now two buttons (owner, 12 Oct 2026):** `Contact our team` (filled black, same mailto) and `Join the waitlist` (outlined; mailto with subject "Join the waitlist" until a waitlist page exists).
 - Legal: `© 2026 Sterilised Air Solutions. All rights reserved. Managed IoT Infrastructure for UK Care Providers.`
 
 ---

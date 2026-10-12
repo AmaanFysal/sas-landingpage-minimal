@@ -147,12 +147,20 @@ export const airIntelligence = {
 } as const;
 
 // 7. Footer
+// The closing headline and button labels were replaced by the owner on
+// 12 Oct 2026 (source had "Sterilised Air Solutions" and "Contact Our Team").
 export const footer = {
-  title: "Sterilised Air Solutions",
+  // Line above / below the 3D object.
+  titleLines: ["Safer air, fuller care homes", "made possible with SAS"],
   body: "Our complete web presence is launching soon. For information regarding the West London PoC or waitlist opportunities, reach out below.",
   cta: {
-    label: "Contact Our Team",
+    label: "Contact our team",
     href: "mailto:info@sterilisedairsolutions.co.uk",
+  },
+  // No waitlist page yet: opens an email with the button text as the subject.
+  waitlist: {
+    label: "Join the waitlist",
+    href: "mailto:info@sterilisedairsolutions.co.uk?subject=Join%20the%20waitlist",
   },
   legal:
     "© 2026 Sterilised Air Solutions. All rights reserved. Managed IoT Infrastructure for UK Care Providers.",

@@ -14,6 +14,7 @@ A single-page Next.js (App Router) site deployed on Vercel.
 - Copy questions and flagged issues are in `docs/knowledge-base.md` §4. Don't "fix" them silently.
 - **No added label words**, ever (no "Learn more", running headers, etc.). The owner thinks extra labels look AI-generated. **Numbers are welcome**: sections are numbered 01–04 and items 1.1, 2.1, 3.1….
 - CSS `uppercase` is fine for styling, except where it would change the source's own casing (e.g. "WELL v2 ALIGNED" must keep the lowercase v).
+- Closing block: headline `footer.titleLines` ("Safer air, fuller care homes" / "made possible with SAS", owner copy replacing the source heading) around the 3D object, then the source paragraph, then Fin's button pair: filled black "Contact our team" + outlined "Join the waitlist".
 - Top banner (`announcement` in site.ts) is reserved for announcements. It currently reuses the PoC title and links to that section. "Fully Managed Service 24/7/365" must **not** go in the banner; it sits in the nav as a status label.
 
 ## Built page (decisions made with the owner)
