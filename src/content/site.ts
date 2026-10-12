@@ -28,10 +28,11 @@ export const hero = {
   ],
   subheading:
     "Transforming clinical safety, proving financial returns, and automating compliance without upfront capital expenditure.",
+  // Each tagline links to the part of the page that backs it up.
   taglines: [
-    "Medical Grade Log 6",
-    "AI Predictive Analysis",
-    "CQC Reporting Ready",
+    { text: "Medical Grade Log 6", href: "#sterilisation" },
+    { text: "AI Predictive Analysis", href: "#predictive-ai" },
+    { text: "CQC Reporting Ready", href: "#cqc-compliance" },
   ],
 } as const;
 
@@ -70,14 +71,17 @@ export const proofOfConcept = {
     "We are commencing a rigorous 12-month Proof of Concept (PoC) in a large West London Care Home to robustly prove the financial and operational benefits of our ecosystem.",
   stats: [
     {
+      id: "financial-target",
       title: "Primary Financial Target",
       body: "Validating a direct reduction in the use of expensive Agency and Bank staff by mitigating staff illness and infection cross-transmission.",
     },
     {
+      id: "independent-validation",
       title: "Independent Validation",
       body: "The University of West London (UWL) is engaged to audit monthly performance, matching historical vs. current spend alongside the external infection environment.",
     },
     {
+      id: "cqc-compliance",
       title: "CQC Compliance",
       body: "Generating automated, concise monthly evidence packs specifically formatted for care home managers to submit during CQC inspector audits.",
     },
@@ -96,6 +100,8 @@ export const occupancy = {
   title: "The Critical Success Factor: Occupancy",
   eyebrow: "A Clear Marketing Advantage",
   body: "By combining clinical-grade disinfection with independent monthly reports from the University of West London, partner care homes achieve an unprecedented marketing differentiator to optimize occupancy levels.",
+  // Phrase within `body` shown with the highlighter treatment.
+  highlight: "unprecedented marketing differentiator",
 } as const;
 
 // 7. Footer
@@ -108,4 +114,11 @@ export const footer = {
   },
   legal:
     "© 2026 Sterilised Air Solutions. All rights reserved. Managed IoT Infrastructure for UK Care Providers.",
+} as const;
+
+// Top announcement banner. Reuses existing copy only (no new words) and links
+// to its section. Swap this for a future announcement when there is one.
+export const announcement = {
+  text: proofOfConcept.title,
+  href: "#proof-of-concept",
 } as const;
