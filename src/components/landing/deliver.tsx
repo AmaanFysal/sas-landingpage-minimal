@@ -20,8 +20,10 @@ export function Deliver() {
 
           {/*
             Fin's stat blocks: three columns split by thin vertical lines (no card
-            borders). Columns share rows (subgrid) so captions, rules and titles
-            line up across the row. Stacked, with space between, below 1024px.
+            borders). Each leads with the result (title), then the number that
+            proves it and its caption, a rule, and the line explaining how (owner
+            request). Columns share rows (subgrid) so numbers, rules and lines
+            align across the row. Stacked, with space between, below 1024px.
           */}
           <ul className="mt-12 grid gap-y-14 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_auto] lg:gap-y-0">
             {deliver.cards.map((card) => (
@@ -29,15 +31,15 @@ export function Deliver() {
                 key={card.title}
                 className="flex flex-col lg:row-span-4 lg:grid lg:grid-rows-subgrid lg:border-l lg:border-ink/10 lg:px-8 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0"
               >
-                <p className="t-stat">
+                <h3 className="t-card text-sky-ink">{card.title}</h3>
+                <p className="t-stat mt-6">
                   <CountUp value={card.stat.value} />
                 </p>
                 <p className="t-caption mt-3 max-w-[280px] text-pretty text-muted">
                   {card.stat.caption}
                   {"note" in card.stat && <sup>{card.stat.note}</sup>}
                 </p>
-                <h3 className="t-card mt-8 border-t border-ink/10 pt-6 text-sky-ink">{card.title}</h3>
-                <p className="t-body mt-4">{card.line}</p>
+                <p className="t-body mt-8 border-t border-ink/10 pt-6">{card.line}</p>
               </li>
             ))}
           </ul>

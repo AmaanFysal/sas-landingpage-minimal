@@ -40,8 +40,8 @@ export const deliver = {
   label: "WHAT WE DELIVER",
   title: "Three results every care home owner cares about.",
   subline: "All with zero upfront cost.",
-  // Fin-style stat columns (owner copy, 12 Oct 2026): big number and caption,
-  // a rule, then the title and one line. `note` is the footnote number shown
+  // Fin-style stat columns (owner copy, 12 Oct 2026), result first: the title,
+  // the big number and caption, a rule, then one line. `note` is the footnote number shown
   // raised after the caption (owner asked for numbers instead of asterisks).
   cards: [
     {

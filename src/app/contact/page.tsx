@@ -55,13 +55,13 @@ function Backdrop() {
           <ul className="mt-16 grid gap-4 md:grid-cols-3">
             {deliver.cards.map((card) => (
               <li key={card.title} className="border border-white/10 p-6">
-                <p className="text-[48px]/none font-light tracking-[-0.04em] text-sky">{card.stat.value}</p>
+                <p className="text-[24px]/[1.2] text-sky">{card.title}</p>
+                <p className="mt-6 text-[48px]/none font-light tracking-[-0.04em] text-sky">{card.stat.value}</p>
                 <p className="mt-3 text-[14px]/[1.4] text-white/50">
                   {card.stat.caption}
                   {"note" in card.stat && <sup>{card.stat.note}</sup>}
                 </p>
-                <p className="mt-8 border-t border-white/10 pt-6 text-[24px]/[1.2] text-sky">{card.title}</p>
-                <p className="mt-4 text-base/[1.5] text-white/60">{card.line}</p>
+                <p className="mt-8 border-t border-white/10 pt-6 text-base/[1.5] text-white/60">{card.line}</p>
               </li>
             ))}
           </ul>
