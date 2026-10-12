@@ -14,7 +14,7 @@ export function PageGrid({ children, className = "" }: { children: ReactNode; cl
 
 /** The single white sheet that holds every numbered section (Fin "22 reasons"). */
 export function Sheet({ children }: { children: ReactNode }) {
-  return <div className="mx-auto w-full max-w-[1888px] bg-sheet py-8 md:w-[calc(100%-2rem)]">{children}</div>;
+  return <div className="mx-auto w-full max-w-[1888px] bg-sheet pt-8 md:w-[calc(100%-2rem)]">{children}</div>;
 }
 
 /**

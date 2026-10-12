@@ -1,8 +1,8 @@
-import { deliver, ecosystem } from "@/content/site";
+import { deliver } from "@/content/site";
 import { PageGrid } from "./layout";
 import { CornerMarks, Square } from "./marks";
 
-/** Un-numbered band between the hero and 01: three outcomes, then a scroll cue. */
+/** Un-numbered band between the hero and 01: three outcomes and a footnote. */
 export function Deliver() {
   return (
     <section id="what-we-deliver" aria-labelledby="deliver-title" className="py-16 md:py-24">
@@ -33,15 +33,6 @@ export function Deliver() {
         </div>
       </PageGrid>
 
-      <a
-        href="#solution-ecosystem"
-        aria-label={ecosystem.title}
-        className="mx-auto mt-14 grid size-10 place-items-center text-ink/40 hover:text-ink md:mt-20"
-      >
-        <svg aria-hidden viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M8 3v10M4 9l4 4 4-4" />
-        </svg>
-      </a>
     </section>
   );
 }

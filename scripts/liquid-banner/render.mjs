@@ -117,7 +117,7 @@ function palette(t) {
  * One strip. `side` is where the banner text is ("right" for the left piece).
  * `edge` is the CSS-px distance from the text side where the art ends.
  */
-function renderStrip({ width, side, edge, holes, marble, seed }) {
+function renderStrip({ width, side, edge, holes, marble, darkFrom, seed }) {
   const fbm = makeNoise(seed);
   const grain = rng(seed * 31 + 1);
   const W = width * SCALE;
@@ -157,7 +157,9 @@ function renderStrip({ width, side, edge, holes, marble, seed }) {
       // Broad, soft bands of colour flowing through the strip.
       const c = field(u, v);
       const t = smooth(-0.42, 0.42, c.f + 0.35 * c.rx);
-      let [r, g, b] = palette(1 - t);
+      // Optionally deepen towards the outer end (under the banner's white ×).
+      const deepen = darkFrom ? 0.5 * smooth(darkFrom, darkFrom + 140, d) : 0;
+      let [r, g, b] = palette(Math.max(0, 1 - t - deepen));
 
       // Gentle airbrushed modelling: compare with a sample towards the light.
       const lit = field(u - 9, v - 6).f - c.f;
@@ -207,7 +209,16 @@ const pieces = {
     marble: { d: 470, y: 10, r: 120 },
     seed: SEED,
   }),
-  right: renderStrip({ width: 600, side: "left", edge: 132, holes: [{ d: 455, y: 2, rx: 38, ry: 12 }], seed: SEED + 101 }),
+  // The white × sits over this piece's outer half, so it darkens there and
+  // its cut-out sits low, clear of the ×.
+  right: renderStrip({
+    width: 600,
+    side: "left",
+    edge: 132,
+    holes: [{ d: 300, y: 35, rx: 44, ry: 11 }],
+    darkFrom: 330,
+    seed: SEED + 101,
+  }),
 };
 
 for (const [name, img] of Object.entries(pieces)) {

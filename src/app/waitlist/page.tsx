@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function WaitlistPage() {
   return (
     <div className="flex min-h-dvh flex-col bg-page">
-      <SiteHeader inner />
+      <SiteHeader inner current="waitlist" />
       <main className="flex flex-1 justify-center px-4 pb-24 pt-14 md:pt-24">
         <LeadForm kind="waitlist" copy={waitlistPage} variant="page" />
       </main>

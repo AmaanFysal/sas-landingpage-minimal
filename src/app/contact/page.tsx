@@ -16,7 +16,7 @@ export const metadata: Metadata = {
  */
 export default function ContactPage() {
   return (
-    <div className="relative flex min-h-dvh flex-col overflow-hidden bg-night text-white">
+    <div className="relative flex min-h-dvh flex-col overflow-clip bg-night text-white">
       <div aria-hidden className="pointer-events-none absolute inset-0 select-none">
         <Image
           src="/art/air-ribbon-loop.webp"
@@ -37,7 +37,7 @@ export default function ContactPage() {
           className="absolute -bottom-[30%] -left-[14%] w-[48vw] max-w-[760px] rotate-180 opacity-25 blur-[80px]"
         />
       </div>
-      <SiteHeader dark inner />
+      <SiteHeader dark inner current="contact" />
       <main className="relative flex flex-1 items-center justify-center px-4 py-12 md:py-20">
         <LeadForm kind="contact" copy={contactPage} variant="modal" />
       </main>

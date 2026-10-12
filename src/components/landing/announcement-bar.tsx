@@ -15,7 +15,7 @@ export function AnnouncementBar() {
   if (!open) return null;
 
   return (
-    <div className="relative flex min-h-[34px] items-stretch bg-banner text-xs/snug text-off-black sm:text-sm/5">
+    <div data-announcement className="relative flex min-h-[34px] items-stretch bg-banner text-xs/snug text-off-black sm:text-sm/5">
       <div aria-hidden className="hidden min-w-0 flex-1 min-[740px]:block">
         <div className="h-full max-w-[500px] bg-[url(/art/banner-liquid-left.webp)] bg-[length:auto_100%] bg-right bg-no-repeat" />
       </div>
@@ -37,7 +37,7 @@ export function AnnouncementBar() {
         type="button"
         aria-label="Close"
         onClick={() => setOpen(false)}
-        className="absolute right-[calc(var(--frame)-8px)] top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-[4px] bg-banner/85 backdrop-blur-sm hover:bg-banner"
+        className="absolute right-[calc(var(--frame)-8px)] top-1/2 grid size-7 -translate-y-1/2 place-items-center text-off-black transition-opacity hover:opacity-70 min-[740px]:text-white"
       >
         <svg aria-hidden viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M3 3l10 10M13 3L3 13" />

@@ -55,6 +55,23 @@
   --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/* The banner + nav stick to the top (Fin G-01/G-02), so in-page jumps stop below them. */
+:root {
+  --nav-h: 64px;
+  --banner-h: 0px;
+}
+@media (width >= 48rem) {
+  :root {
+    --nav-h: 74px;
+  }
+}
+:root:has([data-announcement]) {
+  --banner-h: 34px;
+}
+html {
+  scroll-padding-top: calc(var(--nav-h) + var(--banner-h));
+}
+
 body {
   background: var(--page);
   color: var(--ink);

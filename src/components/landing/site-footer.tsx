@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { footer } from "@/content/site";
 import { LiquidRibbon } from "./liquid-ribbon";
+import { CtaButtons } from "./cta-buttons";
 import { CrosshairFrame } from "./marks";
 
 /** Closing block framed by crop marks (Fin S-12), then a quiet legal row. */
@@ -29,20 +29,8 @@ export function SiteFooter() {
             <span className="block text-balance">{below}</span>
           </h2>
           <p className="t-body-lg mt-10 max-w-[572px]">{footer.body}</p>
-          {/* Fin hero button pair: filled primary + outlined secondary, 8px apart. */}
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
-            <Link
-              href={footer.cta.href}
-              className="inline-flex h-10 items-center rounded-[4px] bg-off-black px-3.5 text-base text-sheet transition-colors hover:bg-sky-ink"
-            >
-              {footer.cta.label}
-            </Link>
-            <Link
-              href={footer.waitlist.href}
-              className="inline-flex h-10 items-center rounded-[4px] border border-off-black px-3.5 text-base text-off-black transition-colors hover:border-off-black/75 hover:text-off-black/75"
-            >
-              {footer.waitlist.label}
-            </Link>
+          <div className="mt-8">
+            <CtaButtons />
           </div>
         </div>
       </section>

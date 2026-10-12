@@ -207,9 +207,9 @@ export function LoopDiagram() {
   return (
     <figure
       className="rounded-2xl bg-sheet/70 px-6 pb-8 pt-6 backdrop-blur-[24px] md:px-10 md:pb-10 md:pt-8"
-      onMouseEnter={() => (paused.current = true)}
-      onMouseLeave={() => (paused.current = false)}
-      onFocus={() => (paused.current = true)}
+      // Keeps playing under the mouse (owner request); only keyboard focus on a
+      // pill holds it, so people tabbing through can read each step.
+      onFocus={(e) => (paused.current = e.target.matches(":focus-visible"))}
       onBlur={() => (paused.current = false)}
     >
       <div ref={boxRef} className="relative mx-auto aspect-square w-full max-w-[440px]">
