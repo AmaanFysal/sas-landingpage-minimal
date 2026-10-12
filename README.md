@@ -68,21 +68,22 @@ It writes three files to `public/art`:
 
 ## Contact and waitlist forms
 
-`/contact` and `/waitlist` email each submission to info@sterilisedairsolutions.co.uk through [Resend](https://resend.com), installed from the Vercel Marketplace on the project `sas-b131/sas-landingpage-minimal` (free plan, `eu-west-1`). Vercel provides two environment variables, `RESEND_API_KEY` and `RESEND_EMAIL_DOMAIN`. To get them locally, run:
+`/contact` and `/waitlist` email each submission to info@sterilisedairsolutions.com through [Resend](https://resend.com). Resend was installed from the Vercel Marketplace on the project `sas-b131/sas-landingpage-minimal` (free plan, `eu-west-1`), and Vercel provides `RESEND_API_KEY`. To get it locally, run:
 
 ```bash
 vercel env pull
 ```
 
-Emails are sent from `forms@sterilisedairsolutions.co.uk`, so the domain must be verified in Resend first. Its DNS is at GoDaddy (email runs on Microsoft 365). Add these three records there; none of them touches the existing email setup:
+Emails are sent from `forms@sterilisedairsolutions.com` (`siteDomain` in `src/content/site.ts`), so the domain must be verified in Resend first. Its DNS is at GoDaddy, and its email runs on Microsoft 365. Add these four records there; none of them touches the existing email setup:
 
 | Type | Name (host) | Value | Priority |
 | --- | --- | --- | --- |
-| TXT | `resend._domainkey` | the DKIM key shown in Resend (starts `p=MIGf…`) | |
+| TXT | `resend._domainkey` | the DKIM key shown in Resend for sterilisedairsolutions.com (starts `p=MIGf…`) | |
 | MX | `send` | `feedback-smtp.eu-west-1.amazonses.com` | 10 |
 | TXT | `send` | `v=spf1 include:amazonses.com ~all` | |
+| CNAME | `rsend` | `send.forge.rmta.net` | |
 
-Then press **Verify** for the domain in Resend: open it from the Vercel dashboard under Integrations → Resend. Until then, a submission shows a message asking the visitor to email info@ directly.
+The domain's DMARC policy is `p=reject`, so the DKIM record must be exact or the emails will be rejected. Once the records are in, verify the domain in Resend. Until then, a submission shows a message asking the visitor to email info@ directly. (An unverified sterilisedairsolutions.co.uk entry, added first by mistake, can be removed from Resend.)
 
 ## Deploy to Vercel
 

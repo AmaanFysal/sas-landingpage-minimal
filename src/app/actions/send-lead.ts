@@ -1,7 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
-import { contactEmail, formFields } from "@/content/site";
+import { contactEmail, formFields, siteDomain } from "@/content/site";
 import { LEAD_STEPS, validateFields, type LeadKind, type LeadState, type LeadValues } from "@/lib/lead";
 
 const SUBMISSION_ID = /^[0-9a-f-]{36}$/i;
@@ -17,8 +17,9 @@ const oneLine = (text: string) => text.replace(/\s+/g, " ").trim().slice(0, 160)
 
 /**
  * Emails a contact request or waitlist sign-up to the SAS inbox via Resend
- * (provisioned through the Vercel Marketplace: RESEND_API_KEY and
- * RESEND_EMAIL_DOMAIN). Public entry point: everything is validated again here.
+ * (provisioned through the Vercel Marketplace: RESEND_API_KEY). Sends from
+ * forms@siteDomain, which must be verified in Resend. Public entry point:
+ * everything is validated again here.
  */
 export async function sendLead(kind: LeadKind, _prev: LeadState, formData: FormData): Promise<LeadState> {
   if (kind !== "contact" && kind !== "waitlist") return { status: "error", failed: true };
@@ -34,9 +35,8 @@ export async function sendLead(kind: LeadKind, _prev: LeadState, formData: FormD
 
   const id = String(formData.get("submissionId") ?? "");
   const apiKey = process.env.RESEND_API_KEY;
-  const domain = process.env.RESEND_EMAIL_DOMAIN;
-  if (!SUBMISSION_ID.test(id) || !apiKey || !domain) {
-    if (!apiKey || !domain) console.error("[sendLead] RESEND_API_KEY or RESEND_EMAIL_DOMAIN is not set");
+  if (!SUBMISSION_ID.test(id) || !apiKey) {
+    if (!apiKey) console.error("[sendLead] RESEND_API_KEY is not set");
     return { status: "error", failed: true };
   }
 
@@ -55,7 +55,7 @@ export async function sendLead(kind: LeadKind, _prev: LeadState, formData: FormD
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send(
     {
-      from: `SAS website <forms@${domain}>`,
+      from: `SAS website <forms@${siteDomain}>`,
       to: [contactEmail],
       replyTo: values.email,
       subject,

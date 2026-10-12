@@ -178,7 +178,10 @@ export const announcement = {
 // fin.ai's /view-demos (dark modal step form) and demo form (light). The
 // wording below is new and awaits owner approval (knowledge-base §4).
 // Submissions are emailed to `contactEmail` via Resend (src/app/actions).
-export const contactEmail = "info@sterilisedairsolutions.co.uk";
+// The company domain is sterilisedairsolutions.com (owner, 12 Oct 2026); the
+// source HTML used the .co.uk address.
+export const siteDomain = "sterilisedairsolutions.com";
+export const contactEmail = `info@${siteDomain}`;
 
 export const formFields = {
   email: { label: "Business email address", placeholder: "Business email address" },
@@ -223,7 +226,7 @@ export const waitlistPage = {
 // search for SAS and summarise it. Gemini has no reliable prompt-in-URL
 // support, so its link opens Google's AI Mode (Gemini) instead.
 const askAiPrompt =
-  "Search the web for Sterilised Air Solutions (sterilisedairsolutions.co.uk) and summarise what they do for UK care homes.";
+  `Search the web for Sterilised Air Solutions (${siteDomain}) and summarise what they do for UK care homes.`;
 const q = encodeURIComponent(askAiPrompt);
 export const askAi = {
   label: "Ask an AI to summarise what we do.",
