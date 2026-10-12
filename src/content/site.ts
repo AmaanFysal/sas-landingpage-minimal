@@ -120,16 +120,6 @@ export const airIntelligence = {
     { label: "LEARN", caption: "Air Intelligence learns each room's rhythm and acts ahead of problems." },
     { label: "PROVE", caption: "Monthly CQC evidence packs, audited by the University of West London." },
   ],
-  agentsLabel: "Inside Air Intelligence",
-  // `image` is filled in once the character PNGs are supplied (public/agents/).
-  agents: [
-    { name: "The Inspector", line: "proves every room gets clean air", image: null },
-    { name: "The Conductor", line: "matches clean air to how hard a room is breathing", image: null },
-    { name: "The Engineer", line: "finds faults and sends the fix", image: null },
-    { name: "The Guardian", line: "protects the air staff share", image: null },
-    { name: "The Responder", line: "takes charge when an outbreak starts", image: null },
-    { name: "The Detective", line: "works out what is changing the air", image: null },
-  ] as { name: string; line: string; image: string | null }[],
 } as const;
 
 // 7. Footer

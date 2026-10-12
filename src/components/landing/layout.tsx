@@ -18,7 +18,7 @@ export function Sheet({ children }: { children: ReactNode }) {
 /**
  * One numbered section inside the sheet (Fin reason block). With `aside`, the
  * title and children take the left five columns and the aside the right five,
- * as in Fin's flywheel section. `below` spans the full content width.
+ * as in Fin's flywheel section.
  */
 export function Reason({
   id,
@@ -27,7 +27,6 @@ export function Reason({
   className = "",
   children,
   aside,
-  below,
 }: {
   id: string;
   number: string;
@@ -35,7 +34,6 @@ export function Reason({
   className?: string;
   children: ReactNode;
   aside?: ReactNode;
-  below?: ReactNode;
 }) {
   const titleId = `${id}-title`;
   const heading = (
@@ -63,7 +61,6 @@ export function Reason({
             {children}
           </>
         )}
-        {below}
       </div>
     </section>
   );

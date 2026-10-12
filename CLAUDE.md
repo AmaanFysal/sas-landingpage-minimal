@@ -24,7 +24,7 @@ A single-page Next.js (App Router) site deployed on Vercel.
 - Accent from the SAS logo: sky `#57B9FF` (squares, highlight), `--sky-ink #0B74B8` for accent text. Headings are Fin black `#000`, buttons `#111`.
 - Highlighter phrase in Occupancy: "unprecedented marketing differentiator" (`occupancy.highlight`).
 - Section 05 follows Fin's flywheel: text left, chalk rounded panel right (`loop-diagram.tsx`): STERILISE → MEASURE → LEARN → PROVE, 3s per step. Hover/focus pauses it and pills are clickable. Under `prefers-reduced-motion` it is static and shows all four captions as a list.
-- Agent tiles: drop the six character PNGs into `public/agents/` and set each `image` in `airIntelligence.agents`. Tiles render text-only until then. The empty rule under the 05 text column is reserved for a partner quote.
+- The empty rule under the 05 text column is reserved for a partner quote. The "Inside Air Intelligence" agent row was removed at the owner's request (12 Oct 2026); don't re-add it.
 - 3D art (`public/art/air-ribbon-*.webp`) is our own three.js render. Regenerate it with `scripts/air-ribbon/` (see README). The logo mark in `public/brand/` is cropped from `../logo-assets` without its tagline.
 
 ## Design direction

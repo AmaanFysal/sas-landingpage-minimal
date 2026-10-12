@@ -126,13 +126,6 @@ Owner-supplied copy, not in the source HTML. Sits between Occupancy and the foot
   - `MEASURE`: `Kaiterra monitors track the air in every room, every minute.`
   - `LEARN`: `Air Intelligence learns each room's rhythm and acts ahead of problems.`
   - `PROVE`: `Monthly CQC evidence packs, audited by the University of West London.`
-- Label: `Inside Air Intelligence`, then six agents:
-  - `The Inspector`: `proves every room gets clean air`
-  - `The Conductor`: `matches clean air to how hard a room is breathing`
-  - `The Engineer`: `finds faults and sends the fix`
-  - `The Guardian`: `protects the air staff share`
-  - `The Responder`: `takes charge when an outbreak starts`
-  - `The Detective`: `works out what is changing the air`
 - Naming: always "Air Intelligence" / "SAS Air Intelligence"; never "AirCrew".
 
 ### Section 7: Footer
