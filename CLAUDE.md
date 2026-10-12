@@ -11,6 +11,7 @@ A single-page Next.js (App Router) site deployed on Vercel.
 - Copy questions and flagged issues are in `docs/knowledge-base.md` §4. Don't "fix" them silently.
 
 ## Design direction
+- Style reference: fin.ai. The element library is `docs/design-library/fin-ai.md`; refer to elements by ID (e.g. `C-07`). §9 maps elements to our sections. Use Fin's patterns, never Fin's copy, logos or 3D assets.
 - Light theme only. No dark mode.
 - Minimal, modern, "AI-native" feel. Generous whitespace, strong typography (Geist), thin borders.
 - No scroll-triggered animations, parallax, marquees, carousels or auto-playing motion. Small hover states are fine.
