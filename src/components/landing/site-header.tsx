@@ -43,9 +43,7 @@ export function SiteHeader({
         </Link>
         <div className="flex items-center gap-4">
           <p
-            className={`t-label hidden h-10 items-center gap-2.5 rounded-[4px] border px-3.5 lg:flex ${
-              dark ? "border-white/20 text-white" : "border-off-black/15 text-off-black"
-            }`}
+            className={`t-label mr-2 hidden h-10 items-center gap-2.5 lg:flex ${dark ? "text-white" : "text-off-black"}`}
           >
             <Square className="bg-rag-green" />
             {header.badge}
