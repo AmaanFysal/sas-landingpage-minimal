@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { footer } from "@/content/site";
 import { LiquidRibbon } from "./liquid-ribbon";
 import { CrosshairFrame } from "./marks";
@@ -30,24 +31,31 @@ export function SiteFooter() {
           <p className="t-body-lg mt-10 max-w-[572px]">{footer.body}</p>
           {/* Fin hero button pair: filled primary + outlined secondary, 8px apart. */}
           <div className="mt-8 flex flex-wrap justify-center gap-2">
-            <a
+            <Link
               href={footer.cta.href}
               className="inline-flex h-10 items-center rounded-[4px] bg-off-black px-3.5 text-base text-sheet transition-colors hover:bg-sky-ink"
             >
               {footer.cta.label}
-            </a>
-            <a
+            </Link>
+            <Link
               href={footer.waitlist.href}
               className="inline-flex h-10 items-center rounded-[4px] border border-off-black px-3.5 text-base text-off-black transition-colors hover:border-off-black/75 hover:text-off-black/75"
             >
               {footer.waitlist.label}
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-      <div className="frame-x mx-auto w-full max-w-[1920px]">
-        <p className="t-caption border-t border-ink/10 py-6 text-muted">{footer.legal}</p>
-      </div>
+      <LegalRow />
     </footer>
+  );
+}
+
+/** Quiet legal line on the frame line; also closes the contact and waitlist pages. */
+export function LegalRow({ dark = false }: { dark?: boolean }) {
+  return (
+    <div className="frame-x relative mx-auto w-full max-w-[1920px]">
+      <p className={`t-caption border-t py-6 ${dark ? "border-white/10 text-white/55" : "border-ink/10 text-muted"}`}>{footer.legal}</p>
+    </div>
   );
 }

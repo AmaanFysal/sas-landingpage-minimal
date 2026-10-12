@@ -13,6 +13,8 @@
   --off-black: #111111; /* Fin buttons */
   --muted: #626260; /* Fin footer legal */
   --banner: #e1e2e5; /* Fin's top-banner grey, behind the liquid art */
+  --night: #04121b; /* Dark pages (contact): SAS logo navy, darkened like Fin's #080f1e */
+  --error: #b42318; /* Form errors (AA on white) */
   --sky: #57b9ff; /* SAS sky (logo): squares, highlight */
   --sky-ink: #0b74b8; /* SAS sky dark enough for text */
   --rag-red: #ef4444;
@@ -43,6 +45,8 @@
   --color-off-black: var(--off-black);
   --color-muted: var(--muted);
   --color-banner: var(--banner);
+  --color-night: var(--night);
+  --color-error: var(--error);
   --color-sky: var(--sky);
   --color-sky-ink: var(--sky-ink);
   --color-rag-red: var(--rag-red);

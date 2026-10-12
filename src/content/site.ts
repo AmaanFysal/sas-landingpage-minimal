@@ -155,12 +155,11 @@ export const footer = {
   body: "Our complete web presence is launching soon. For information regarding the West London PoC or waitlist opportunities, reach out below.",
   cta: {
     label: "Contact our team",
-    href: "mailto:info@sterilisedairsolutions.co.uk",
+    href: "/contact",
   },
-  // No waitlist page yet: opens an email with the button text as the subject.
   waitlist: {
     label: "Join the waitlist",
-    href: "mailto:info@sterilisedairsolutions.co.uk?subject=Join%20the%20waitlist",
+    href: "/waitlist",
   },
   legal:
     "© 2026 Sterilised Air Solutions. All rights reserved. Managed IoT Infrastructure for UK Care Providers.",
@@ -171,4 +170,47 @@ export const footer = {
 export const announcement = {
   text: proofOfConcept.title,
   href: "#proof-of-concept",
+} as const;
+
+// 8. Contact and waitlist pages (owner request 12 Oct 2026). Layout after
+// fin.ai's /view-demos (dark modal step form) and demo form (light). The
+// wording below is new and awaits owner approval (knowledge-base §4).
+// Submissions are emailed to `contactEmail` via Resend (src/app/actions).
+export const contactEmail = "info@sterilisedairsolutions.co.uk";
+
+export const formFields = {
+  email: { label: "Business email address", placeholder: "Business email address" },
+  name: { label: "Full name", placeholder: "Full name" },
+  organisation: { label: "Care home or group", placeholder: "Care home or group" },
+  phone: { label: "Phone number", placeholder: "Phone number" },
+  message: { label: "How can we help?", placeholder: "Tell us about your care home" },
+  homes: { label: "Number of care homes", placeholder: "Select…", options: ["1", "2–5", "6–20", "21+"] },
+  role: { label: "Your role", placeholder: "Your role" },
+  updates: { label: "Send me updates about Sterilised Air Solutions and the West London Proof of Concept." },
+} as const;
+
+export const formText = {
+  back: "Back",
+  required: "Please fill in this field.",
+  invalidEmail: "Please enter a valid email address.",
+  sending: "Sending…",
+  // {email} is replaced with contactEmail.
+  failed: "Something went wrong. Please email us at {email}.",
+} as const;
+
+export const contactPage = {
+  title: "Contact our team",
+  // Two-tone heading: muted first line, strong second line.
+  titleLines: ["Talk to the team behind", "Sterilised Air Solutions"],
+  next: "Continue",
+  submit: "Send",
+  done: { title: "Thank you", body: "Your message is with our team. We'll be in touch." },
+} as const;
+
+export const waitlistPage = {
+  title: "Join the waitlist",
+  titleLines: ["Join the waitlist for", "zero capex air sterilisation"],
+  next: "Next",
+  submit: "Join the waitlist",
+  done: { title: "You're on the waitlist", body: "Thank you. We'll be in touch." },
 } as const;

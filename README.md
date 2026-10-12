@@ -61,6 +61,24 @@ node scripts/liquid-banner/render.mjs --seed 7 --preview /tmp/banner-preview.png
 
 It writes `public/art/banner-liquid-left.webp` and `banner-liquid-right.webp` (2×, 68px tall, transparent background) and an optional preview of both on the banner grey.
 
+## Contact and waitlist forms
+
+`/contact` and `/waitlist` email each submission to info@sterilisedairsolutions.co.uk through [Resend](https://resend.com), installed from the Vercel Marketplace on the project `sas-b131/sas-landingpage-minimal` (free plan, `eu-west-1`). Vercel provides two environment variables, `RESEND_API_KEY` and `RESEND_EMAIL_DOMAIN`. To get them locally, run:
+
+```bash
+vercel env pull
+```
+
+Emails are sent from `forms@sterilisedairsolutions.co.uk`, so the domain must be verified in Resend first. Its DNS is at GoDaddy (email runs on Microsoft 365). Add these three records there; none of them touches the existing email setup:
+
+| Type | Name (host) | Value | Priority |
+| --- | --- | --- | --- |
+| TXT | `resend._domainkey` | the DKIM key shown in Resend (starts `p=MIGf…`) | |
+| MX | `send` | `feedback-smtp.eu-west-1.amazonses.com` | 10 |
+| TXT | `send` | `v=spf1 include:amazonses.com ~all` | |
+
+Then press **Verify** for the domain in Resend: open it from the Vercel dashboard under Integrations → Resend. Until then, a submission shows a message asking the visitor to email info@ directly.
+
 ## Deploy to Vercel
 
 ```bash
