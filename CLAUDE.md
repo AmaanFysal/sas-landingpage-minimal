@@ -36,7 +36,7 @@ A single-page Next.js (App Router) site deployed on Vercel.
 - Style reference: fin.ai. The element library is `docs/design-library/fin-ai.md`; refer to elements by ID (e.g. `C-07`). §9 maps elements to our sections. Use Fin's patterns, never Fin's copy, logos or 3D assets.
 - Light theme only. No dark mode.
 - Minimal, modern, "AI-native" feel. Generous whitespace, thin borders.
-- No scroll-triggered animations, parallax, marquees, carousels or auto-playing motion. Small hover states are fine. **Only exception: the section 05 loop diagram** (owner request), which must keep respecting reduced motion.
+- No scroll-triggered animations, parallax, marquees, carousels or auto-playing motion. Small hover states are fine. **Exceptions (owner requests), both respecting reduced motion:** the section 05 loop diagram, and the section numbers rolling in once on scroll (`rolling-number.tsx`, copied from fin.ai: masked digits rise 1em and fade in, 1s/0.8s, 80ms stagger, trigger at 12% above viewport bottom).
 - Keep scrolling short. Few sections, nothing padded out.
 - Mobile-first and accessible: semantic headings, visible RAG labels, AA contrast.
 

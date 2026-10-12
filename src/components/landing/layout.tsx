@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { RollingNumber } from "./rolling-number";
 
 // Fin homepage grid: 16px page inset, 12 columns, 16px gutters. Content sits
 // in columns 2–11; section numbers, the logo and the footer start on the
@@ -40,7 +41,7 @@ export function Reason({
   const heading = (
     <h2 id={titleId} className="t-callout max-w-[552px]">
       <span aria-hidden className="mb-2 block md:num-hang md:mb-0">
-        {number}
+        <RollingNumber value={number} />
       </span>
       {title}
     </h2>
