@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <style>
   html,body{margin:0;background:#faf9f6}
-  canvas{display:block;width:min(100vw,100vh);height:min(100vw,100vh);margin:auto}
+  canvas{display:block;max-width:100vw;max-height:100vh;width:auto;height:auto;margin:auto}
   #status{position:fixed;left:8px;top:8px;font:12px monospace;color:#555}
 </style>
 <script type="importmap">
@@ -23,6 +23,11 @@ import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 const q = new URLSearchParams(location.search);
 const P = (k, d) => (q.has(k) ? Number(q.get(k)) : d);
 const SIZE = P("size", 1400);
+// Output size (defaults to a SIZE square). For a zoomed-in crop of the same
+// framing, set `full` (virtual square frame in px) and `ox`/`oy` (top-left of
+// the crop inside that frame): the camera renders just that window.
+const W = P("w", SIZE), H = P("h", SIZE);
+const FULL = P("full", 0);
 const shape = q.get("shape") || "ribbon";
 const save = q.get("save");
 
@@ -33,7 +38,7 @@ const PEARL = new THREE.Color("#eaf6ff");
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
 renderer.setPixelRatio(1);
-renderer.setSize(SIZE, SIZE, false);
+renderer.setSize(W, H, false);
 renderer.toneMapping = { neutral: THREE.NeutralToneMapping, aces: THREE.ACESFilmicToneMapping, agx: THREE.AgXToneMapping, none: THREE.NoToneMapping }[q.get("tm") || "neutral"];
 renderer.toneMappingExposure = P("exp", 1.0);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -197,12 +202,16 @@ group.rotation.set(P("rx", -0.95), P("ry", 0.25), P("rz", 0.4));
 const camera = new THREE.PerspectiveCamera(P("fov", 28), 1, 0.1, 100);
 camera.position.set(0, 0, P("dist", 5.2));
 camera.lookAt(0, 0, 0);
+if (FULL > 0) camera.setViewOffset(FULL, FULL, P("ox", 0), P("oy", 0), W, H);
+else camera.aspect = W / H;
+camera.updateProjectionMatrix();
 
 renderer.render(scene, camera);
 
 // Film grain, weighted by alpha so only the object gets it.
 const out = document.createElement("canvas");
-out.width = out.height = SIZE;
+out.width = W;
+out.height = H;
 const octx = out.getContext("2d");
 octx.drawImage(renderer.domElement, 0, 0);
 const filmGrain = P("film", finish === "gloss" ? 0 : 0.07);
@@ -210,14 +219,14 @@ if (filmGrain > 0) {
   // Grain specks are `grainPx` square so they survive the image being shown
   // smaller than it is rendered.
   const g = Math.max(1, Math.round(P("grainPx", 1)));
-  const px = octx.getImageData(0, 0, SIZE, SIZE);
+  const px = octx.getImageData(0, 0, W, H);
   const d = px.data;
-  for (let by = 0; by < SIZE; by += g)
-    for (let bx = 0; bx < SIZE; bx += g) {
+  for (let by = 0; by < H; by += g)
+    for (let bx = 0; bx < W; bx += g) {
       const n0 = (Math.random() + Math.random() - 1) * 255 * filmGrain;
-      for (let y = by; y < Math.min(by + g, SIZE); y++)
-        for (let x = bx; x < Math.min(bx + g, SIZE); x++) {
-          const i = (y * SIZE + x) * 4;
+      for (let y = by; y < Math.min(by + g, H); y++)
+        for (let x = bx; x < Math.min(bx + g, W); x++) {
+          const i = (y * W + x) * 4;
           if (d[i + 3] === 0) continue;
           const n = n0 * (d[i + 3] / 255);
           d[i] = Math.max(0, Math.min(255, d[i] + n));
