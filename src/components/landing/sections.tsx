@@ -56,10 +56,10 @@ function Ecosystem() {
   );
 }
 
-/** 02 — warm watercolour band with frosted cards (Fin reason 03 + Apex cards). */
+/** 02 — soft sky band with frosted cards (Fin reason 03 + Apex cards). */
 function ProofOfConcept() {
   return (
-    <Reason id="proof-of-concept" number="02" title={proofOfConcept.title} className="bg-band-cream">
+    <Reason id="proof-of-concept" number="02" title={proofOfConcept.title} className="bg-band-sky">
       <p className="t-body-lg mt-4 max-w-[572px]">{proofOfConcept.intro}</p>
       <div className="mt-10 grid grid-cols-10 gap-x-4">
         <div className="col-span-10 grid md:col-span-8 md:col-start-2 md:grid-cols-3">

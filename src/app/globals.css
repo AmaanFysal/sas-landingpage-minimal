@@ -163,15 +163,13 @@ body {
     #eaf5fd;
 }
 
-/* Warm watercolour band (Fin reason 03, sampled avg #efe1b2). */
-@utility bg-band-cream {
+/* Soft sky band behind section 02 (SAS logo blue; Fin S-03 band technique). */
+@utility bg-band-sky {
   background:
-    radial-gradient(30% 42% at 24% 40%, rgb(251 212 143 / 0.9), transparent 70%),
-    radial-gradient(34% 48% at 80% 72%, rgb(237 219 156 / 0.85), transparent 70%),
-    radial-gradient(45% 55% at 62% 12%, rgb(234 232 201 / 0.95), transparent 70%),
-    radial-gradient(38% 50% at 8% 92%, rgb(229 208 144 / 0.7), transparent 70%),
-    radial-gradient(30% 40% at 95% 20%, rgb(245 225 170 / 0.9), transparent 70%),
-    #efe6c2;
+    radial-gradient(55% 70% at 12% 18%, rgb(87 185 255 / 0.22), transparent 70%),
+    radial-gradient(45% 60% at 88% 85%, rgb(87 185 255 / 0.2), transparent 70%),
+    radial-gradient(40% 50% at 65% 10%, rgb(255 255 255 / 0.85), transparent 70%),
+    #eef5fa;
 }
 
 /* Quote panel: chalk fading to off-white (Fin C-13). */
