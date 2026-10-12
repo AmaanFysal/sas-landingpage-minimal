@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LeadForm } from "@/components/forms/lead-form";
 import { CtaButtons } from "@/components/landing/cta-buttons";
-import { Square } from "@/components/landing/marks";
+import { TickIcon } from "@/components/landing/hero";
 import { LegalRow } from "@/components/landing/site-footer";
 import { SiteHeader } from "@/components/landing/site-header";
 import { contactPage, deliver, hero, meta } from "@/content/site";
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
  * - The page is exactly one screen tall and doesn't scroll. Only the form
  *   layer scrolls, and only if the card is taller than a short screen.
  * - The page behind is dark (owner request). It reuses existing copy (hero
- *   subheading, taglines, buttons, outcome cards, legal line); the big hero
+ *   subline, buttons, tick line, outcome cards, legal line); the big hero
  *   heading and the render were taken out at the owner's request. It is
  *   decorative, so it is hidden from assistive tech and can't be focused.
  */
@@ -42,24 +42,26 @@ function Backdrop() {
     <>
       <section className="grid grid-cols-12 gap-x-4 px-4 pt-10 md:px-0 md:pt-16">
         <div className="col-span-12 md:col-span-10 md:col-start-2">
-          <p className="max-w-[572px] text-[18px]/[1.4] text-white/70">{hero.subheading}</p>
-          <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-base">
-            {hero.taglines.map((t) => (
-              <li key={t.text} className="flex items-center gap-2.5">
-                <Square />
-                {t.text}
-              </li>
-            ))}
-          </ul>
+          <p className="max-w-[480px] text-[18px]/[1.3] text-white/60 lg:text-[20px]/[1.25]">
+            {hero.subline.lead} <strong className="font-medium text-white/80">{hero.subline.bold}</strong>
+          </p>
           <div className="mt-10">
             <CtaButtons dark />
           </div>
+          <p className="mt-5 flex items-center gap-2 text-[14px]/[1.4] text-white/70">
+            <TickIcon dark />
+            {hero.note}
+          </p>
           <ul className="mt-16 grid gap-4 md:grid-cols-3">
             {deliver.cards.map((card) => (
               <li key={card.title} className="border border-white/10 p-6">
-                <p className="text-[24px]/[1.2] text-sky">{card.title}</p>
+                <p className="text-[48px]/none font-light tracking-[-0.04em] text-sky">{card.stat.value}</p>
+                <p className="mt-3 text-[14px]/[1.4] text-white/50">
+                  {card.stat.caption}
+                  {"note" in card.stat && <sup>{card.stat.note}</sup>}
+                </p>
+                <p className="mt-8 border-t border-white/10 pt-6 text-[24px]/[1.2] text-sky">{card.title}</p>
                 <p className="mt-4 text-base/[1.5] text-white/60">{card.line}</p>
-                <p className="mt-8 border-t border-white/10 pt-4 text-[14px]/[1.4] text-white/50">{card.fact}</p>
               </li>
             ))}
           </ul>

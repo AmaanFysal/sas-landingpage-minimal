@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: meta.title,
-  description: hero.subheading,
+  description: `${hero.subline.lead} ${hero.subline.bold}`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
