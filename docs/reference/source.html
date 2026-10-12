@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)file:///C:/Users/cllut/Downloads/index%20(5).html -->
+<html lang="en-GB"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sterilised Air Solutions | Zero Capex IoT Air Sterilisation for UK Care Homes</title>
+    <style>
+        :root {
+            --primary: #0F172A;
+            --accent: #0284C7;
+            --accent-light: #E0F2FE;
+            --success: #22C55E;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --text-main: #334155;
+            --text-light: #64748B;
+            --bg-light: #F8FAFC;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            padding: 24px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .badge-managed {
+            background-color: var(--accent);
+            color: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1E293B 100%);
+            color: #FFFFFF;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94A3B8;
+            max-width: 800px;
+            margin: 0 auto 32px auto;
+        }
+
+        .hero-taglines {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .tagline-pill {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: var(--primary);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 12px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .rag-preview {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .rag-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .rag-red { background-color: var(--danger); }
+        .rag-amber { background-color: var(--warning); }
+        .rag-green { background-color: var(--success); }
+
+        .poc-banner {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            padding: 40px;
+            border-radius: 0 8px 8px 0;
+            margin: 64px 0;
+        }
+
+        .poc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .poc-stat {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .poc-stat h4 {
+            color: var(--accent);
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .poc-stat p {
+            font-size: 15px;
+            color: var(--text-main);
+        }
+
+        .compliance-section {
+            padding: 64px 0;
+            background-color: #FFFFFF;
+        }
+
+        .compliance-logos {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .compliance-badge {
+            border: 2px solid var(--primary);
+            padding: 16px 32px;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            color: var(--primary);
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            padding: 64px 0;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .footer-cta p {
+            color: #94A3B8;
+            margin-bottom: 32px;
+        }
+
+        .btn-email {
+            background-color: var(--accent);
+            color: #FFFFFF;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+
+        .btn-email:hover {
+            background-color: #0270a5;
+        }
+
+        .footer-bottom {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #334155;
+            color: #64748B;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .header-flex { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo">Sterilised Air <span>Solutions</span></div>
+            <div class="badge-managed">Fully Managed Service 24/7/365</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Zero Capex IoT Air Sterilisation<br>For the UK Care Home Market</h1>
+            <p>Transforming clinical safety, proving financial returns, and automating compliance without upfront capital expenditure.</p>
+            <div class="hero-taglines">
+                <div class="tagline-pill">Medical Grade Log 6</div>
+                <div class="tagline-pill">AI Predictive Analysis</div>
+                <div class="tagline-pill">CQC Reporting Ready</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container" style="padding-top: 64px; padding-bottom: 64px;">
+        
+        <h2 class="section-title">The Solution Ecosystem</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>ILimex Sterilisation</h3>
+                <p>Delivering Medical Grade Log 6 sterilised air independently validated by Ulster University. Destroys airborne pathogens to break the cycle of cross-infection completely.</p>
+            </div>
+            <div class="card">
+                <h3>Kaiterra Monitoring</h3>
+                <p>Continuous Indoor Air Quality monitoring linked directly to clear, user-friendly LED displays. Provides real-time status updates using universal visual indicators.</p>
+                <div class="rag-preview">
+                    <span class="rag-dot rag-red" title="Action Required"></span>
+                    <span class="rag-dot rag-amber" title="Cautionary Level"></span>
+                    <span class="rag-dot rag-green" title="Optimal Air Quality"></span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Predictive AI Layer</h3>
+                <p>Advanced machine learning models process environmental metrics to provide predictive analysis, preventing infection outbreaks before they disrupt your facility.</p>
+            </div>
+        </div>
+
+        <div class="poc-banner">
+            <h2 style="color: var(--primary); font-size: 24px; margin-bottom: 12px;">Active Proof of Concept: West London Care Home</h2>
+            <p>We are commencing a rigorous 12-month Proof of Concept (PoC) in a large West London Care Home to robustly prove the financial and operational benefits of our ecosystem.</p>
+            
+            <div class="poc-grid">
+                <div class="poc-stat">
+                    <h4>Primary Financial Target</h4>
+                    <p>Validating a direct reduction in the use of expensive Agency and Bank staff by mitigating staff illness and infection cross-transmission.</p>
+                </div>
+                <div class="poc-stat">
+                    <h4>Independent Validation</h4>
+                    <p>The University of West London (UWL) is engaged to audit monthly performance, matching historical vs. current spend alongside the external infection environment.</p>
+                </div>
+                <div class="poc-stat">
+                    <h4>CQC Compliance</h4>
+                    <p>Generating automated, concise monthly evidence packs specifically formatted for care home managers to submit during CQC inspector audits.</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="compliance-section">
+            <h2 class="section-title">Global Environmental Standards</h2>
+            <p style="text-align: center; max-width: 700px; margin: -24px auto 32px auto; color: var(--text-light);">
+                Our systems continuously log data to demonstrate complete compliance on an annual basis with top-tier international building standards.
+            </p>
+            <div class="compliance-logos">
+                <div class="compliance-badge">RESET COMPLIANT</div>
+                <div class="compliance-badge">WELL v2 ALIGNED</div>
+            </div>
+        </section>
+
+        <div class="card" style="background-color: var(--accent-light); border-color: #BAE6FD; text-align: center; margin-bottom: 64px;">
+            <h3 style="color: #0369A1;">The Critical Success Factor: Occupancy</h3>
+            <p style="color: #0EA5E9; font-weight: 600; margin-bottom: 12px;">A Clear Marketing Advantage</p>
+            <p style="max-width: 800px; margin: 0 auto; color: #0369A1;">
+                By combining clinical-grade disinfection with independent monthly reports from the University of West London, partner care homes achieve an unprecedented marketing differentiator to optimize occupancy levels.
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container footer-cta">
+            <h2>Sterilised Air Solutions</h2>
+            <p>Our complete web presence is launching soon. For information regarding the West London PoC or waitlist opportunities, reach out below.</p>
+            <a href="mailto:info@sterilisedairsolutions.co.uk" class="btn-email">Contact Our Team</a>
+            <div class="footer-bottom">
+                © 2026 Sterilised Air Solutions. All rights reserved. Managed IoT Infrastructure for UK Care Providers.
+            </div>
+        </div>
+    </footer>
+
+
+
+</body></html>

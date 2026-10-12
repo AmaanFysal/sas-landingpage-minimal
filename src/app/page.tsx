@@ -1,69 +1,116 @@
-import Image from "next/image";
+import {
+  ecosystem,
+  footer,
+  header,
+  hero,
+  occupancy,
+  proofOfConcept,
+  standards,
+} from "@/content/site";
 
+const ragColour = {
+  red: "bg-rag-red",
+  amber: "bg-rag-amber",
+  green: "bg-rag-green",
+} as const;
+
+// Unstyled content skeleton: every section from src/content/site.ts in source
+// order. Replace with the real design; keep the order and the words.
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="mx-auto w-full max-w-5xl px-6">
+      <header className="flex items-center justify-between py-6">
+        <span className="font-semibold">
+          {header.logo.lead}
+          <span className="text-accent">{header.logo.accent}</span>
+        </span>
+        <span className="text-sm text-muted">{header.badge}</span>
+      </header>
+
+      <main className="flex flex-col gap-24 py-16">
+        <section>
+          <h1 className="text-4xl font-semibold tracking-tight">
+            {hero.headingLines[0]}
+            <br />
+            {hero.headingLines[1]}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <p className="mt-4 max-w-2xl text-muted">{hero.subheading}</p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {hero.taglines.map((t) => (
+              <li key={t} className="rounded-full border border-border px-3 py-1 text-sm">
+                {t}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold">{ecosystem.title}</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {ecosystem.cards.map((card) => (
+              <article key={card.id} className="rounded-xl border border-border p-6">
+                <h3 className="font-semibold">{card.title}</h3>
+                <p className="mt-2 text-sm text-muted">{card.body}</p>
+                {"rag" in card && (
+                  <ul className="mt-4 flex flex-col gap-1 text-sm">
+                    {card.rag.map((r) => (
+                      <li key={r.status} className="flex items-center gap-2">
+                        <span className={`size-3 rounded-full ${ragColour[r.status]}`} />
+                        {r.label}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold">{proofOfConcept.title}</h2>
+          <p className="mt-4 max-w-2xl text-muted">{proofOfConcept.intro}</p>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {proofOfConcept.stats.map((s) => (
+              <div key={s.title}>
+                <h4 className="text-sm font-medium uppercase tracking-wide text-accent">
+                  {s.title}
+                </h4>
+                <p className="mt-2 text-sm">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold">{standards.title}</h2>
+          <p className="mt-4 max-w-2xl text-muted">{standards.body}</p>
+          <ul className="mt-6 flex gap-3">
+            {standards.badges.map((b) => (
+              <li key={b} className="rounded-md border border-foreground px-4 py-2 text-sm font-semibold">
+                {b}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h3 className="text-xl font-semibold">{occupancy.title}</h3>
+          <p className="mt-2 text-sm font-medium text-accent">{occupancy.eyebrow}</p>
+          <p className="mt-2 max-w-2xl text-muted">{occupancy.body}</p>
+        </section>
       </main>
+
+      <footer className="border-t border-border py-16">
+        <h2 className="text-xl font-semibold">{footer.title}</h2>
+        <p className="mt-2 max-w-2xl text-muted">{footer.body}</p>
+        <a
+          href={footer.cta.href}
+          className="mt-6 inline-block rounded-md bg-foreground px-5 py-2.5 text-sm font-medium text-background"
+        >
+          {footer.cta.label}
+        </a>
+        <p className="mt-12 text-xs text-muted">{footer.legal}</p>
+      </footer>
     </div>
   );
 }
