@@ -229,31 +229,31 @@ body {
 
 /*
  * Hero render placement (fin.ai rule: one render, cropped by the panel).
- * Phones/tablets: below the text, shown whole but wider than the panel so the
- * sides are trimmed, bleeding off the bottom. From 1280px: about 2.5x the
- * closing size, starting at column 8 and running off the right and bottom
- * edges, so it reads as a larger view of the same ribbon.
+ * Phones: below the text, shown whole but wider than the panel so the sides
+ * are trimmed, bleeding off the bottom. Tablets: centred and large, bleeding
+ * off the bottom. From 1280px: starts at column 8, larger than the closing
+ * view, running off the right and bottom edges so the panel crops it.
  */
 .hero-art {
-  width: 124%;
-  margin-left: -12%;
-  margin-bottom: -7%;
+  width: 118%;
+  margin-left: -9%;
+  margin-bottom: -14%;
 }
 
 @media (width >= 48rem) {
   .hero-art {
-    width: 112%;
-    margin-left: -6%;
-    margin-bottom: -6%;
+    width: min(84%, 760px);
+    margin-inline: auto;
+    margin-bottom: -12%;
   }
 }
 
 @media (width >= 80rem) {
   .hero-art {
     position: absolute;
-    bottom: -14%;
+    bottom: -11%;
     left: calc(7 * (var(--col) + 16px) + 24px);
-    width: calc((5 * var(--col) + 64px) * 1.55);
+    width: calc((5 * var(--col) + 64px) * 1.05);
     margin: 0;
   }
 }

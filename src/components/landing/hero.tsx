@@ -40,10 +40,10 @@ export function Hero() {
 
       <div className="hero-art pointer-events-none col-span-12 select-none">
         <Image
-          src="/art/air-ribbon.webp"
+          src="/art/air-ribbon-loop.webp"
           alt=""
-          width={2504}
-          height={1683}
+          width={2300}
+          height={2374}
           quality={90}
           loading="eager"
           fetchPriority="high"

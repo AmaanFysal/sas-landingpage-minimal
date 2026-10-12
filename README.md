@@ -21,7 +21,7 @@ src/
     icon.png                # Favicon (SAS mark)
   components/landing/       # Header, hero, numbered sections, footer
 public/
-  art/air-ribbon.webp       # The 3D "air ribbon" render (our own), used in hero and closing
+  art/air-ribbon-loop.webp     # The 3D "air ribbon" render (our own), used in hero and closing
   brand/sas-mark.png        # Logo mark cropped from ../logo-assets
 scripts/air-ribbon/         # three.js scene used to render public/art
 ```
@@ -43,9 +43,9 @@ node scripts/air-ribbon/server.mjs "$PWD/scripts/air-ribbon/out" 4319
 
 Open this URL in a browser to render the single ribbon used in both the hero and the closing block (satin, grainy metal; add `finish=gloss` for the original glossy look):
 
-`http://localhost:4319/?shape=ribbon&size=3000&dist=6.4&env=1.3&keylight=2.6&metal=0.75&rough=0.32&bump=0.9&film=0.1&grainPx=3&rx=-1.15&ry=0.45&rz=0.9&tm=neutral&sky=3cc4ff&save=air-ribbon`
+`http://localhost:4319/?shape=ribbon&size=3000&dist=6.4&env=1.3&keylight=2.6&metal=0.75&rough=0.32&bump=0.9&film=0.1&grainPx=3&rx=-0.6&ry=-0.5&rz=2.2&tm=neutral&sky=3cc4ff&save=air-ribbon`
 
-The PNG is saved to the `out` folder. Trim it, add 40px transparent padding and save it as WebP (quality 90) to `public/art/air-ribbon.webp`. The script can also render zoomed crops (`w`, `h`, `full`, `ox`, `oy`), but the site crops with CSS instead.
+The PNG is saved to the `out` folder. Trim it, add 40px transparent padding and save it as WebP (quality 90) to `public/art/air-ribbon-loop.webp`. The script can also render zoomed crops (`w`, `h`, `full`, `ox`, `oy`), but the site crops with CSS instead.
 
 ## Deploy to Vercel
 
