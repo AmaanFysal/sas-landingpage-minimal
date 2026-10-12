@@ -7,9 +7,10 @@ import { Square } from "./marks";
 
 /**
  * Site header (Fin G-02): the announcement bar and nav stick to the top while
- * scrolling, like Fin's. Right side: the status badge (from 1024px, where it
- * fits) and the Contact / Waitlist button pair. On phones the wordmark folds
- * to the mark so both buttons fit.
+ * scrolling, like Fin's. Left: the full SAS logo (mark, name and "Biosecurity -
+ * Breathe Better"; owner request). Right side: the status badge (from 1024px,
+ * where it fits) and the Contact / Waitlist button pair; below 440px only the
+ * primary button fits next to the full logo.
  * - The home page shows the bar and links the logo to the top; inner pages
  *   (`inner`) link it home, skip the bar and drop their own button (`current`).
  * - `dark` is Fin's dark-page variant: white logo, text and primary button.
@@ -30,12 +31,15 @@ export function SiteHeader({
     <header className={`sticky top-0 z-50 ${dark ? "bg-night" : white ? "bg-sheet" : "bg-page"}`}>
       {!inner && <AnnouncementBar />}
       <div className="frame-x mx-auto flex h-16 w-full max-w-[1920px] items-center justify-between gap-4 md:h-[74px]">
-        <Link href={inner ? "/" : "#top"} aria-label={`${header.logo.lead}${header.logo.accent}`} className="flex shrink-0 items-center gap-2.5">
-          <Image src={dark ? "/brand/sas-mark-white.png" : "/brand/sas-mark.png"} alt="" width={249} height={233} className="h-8 w-auto" />
-          <span className={`hidden text-base font-medium tracking-[-0.01em] sm:inline ${dark ? "text-white" : ""}`}>
-            {header.logo.lead}
-            <span className={dark ? "text-sky" : "text-sky-ink"}>{header.logo.accent}</span>
-          </span>
+        <Link href={inner ? "/" : "#top"} className="shrink-0">
+          <Image
+            src={dark ? "/brand/sas-logo-white.png" : "/brand/sas-logo.png"}
+            alt={`${header.logo.lead}${header.logo.accent}`}
+            width={631}
+            height={144}
+            loading="eager"
+            className="h-8 w-auto md:h-10"
+          />
         </Link>
         <div className="flex items-center gap-4">
           <p

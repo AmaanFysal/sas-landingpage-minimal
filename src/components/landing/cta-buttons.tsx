@@ -25,7 +25,8 @@ export function CtaButtons({ dark = false, nav = false, hide }: { dark?: boolean
         </Link>
       )}
       {hide !== "waitlist" && (
-        <Link href={footer.waitlist.href} className={`${base} ${outlined}`}>
+        // In the nav on narrow phones, only the primary button fits beside the full logo.
+        <Link href={footer.waitlist.href} className={`${base} ${outlined} ${nav && hide !== "contact" ? "max-[439px]:hidden" : ""}`}>
           {footer.waitlist.label}
         </Link>
       )}
