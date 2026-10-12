@@ -16,13 +16,13 @@ export function SiteFooter() {
         <div className="flex flex-col items-center px-4 py-20 text-center md:py-28">
           <h2 id="closing-title" className="t-display">
             <span className="block text-balance">{above}</span>{" "}
-            <LiquidRibbon className="pointer-events-none mx-auto my-[-0.2em] w-[min(56vw,340px)] select-none">
+            <LiquidRibbon className="pointer-events-none mx-auto my-[-0.2em] w-[200px] md:w-[340px] select-none">
               <Image
                 src="/art/air-ribbon-loop.webp"
                 alt=""
                 width={2300}
                 height={2374}
-                sizes="(min-width: 768px) 340px, 56vw"
+                sizes="(min-width: 768px) 340px, 200px"
                 quality={90}
                 className="h-auto w-full"
               />

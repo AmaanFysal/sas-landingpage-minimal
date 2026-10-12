@@ -5,6 +5,13 @@ import { RollingNumber } from "./rolling-number";
 // in columns 2–11; section numbers, the logo and the footer start on the
 // frame line (middle of column 1); see --frame in globals.css.
 
+/**
+ * Stacked blocks (card rows, stats, asides) keep this fixed width below 1280px
+ * instead of stretching across a tablet, the way fin.ai holds its columns at a
+ * fixed width. Phones are narrower than this, so it only applies on tablets.
+ */
+export const TABLET_MAX = "max-w-[720px] xl:max-w-none";
+
 /** Page-width 12-column grid with the 16px page inset. */
 export function PageGrid({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
@@ -17,16 +24,10 @@ export function Sheet({ children }: { children: ReactNode }) {
   return <div className="mx-auto w-full max-w-[1888px] bg-sheet pt-8 md:w-[calc(100%-2rem)]">{children}</div>;
 }
 
-// Text and aside side by side (five columns each), from md or from xl.
-const split = {
-  md: { grid: "md:grid-cols-10 md:gap-x-4", text: "md:col-span-5", aside: "md:col-span-5 md:col-start-6" },
-  xl: { grid: "xl:grid-cols-10 xl:gap-x-4", text: "xl:col-span-5", aside: "xl:col-span-5 xl:col-start-6" },
-} as const;
-
 /**
  * One numbered section inside the sheet (Fin reason block). With `aside`, the
  * title and children take the left five columns and the aside the right five,
- * as in Fin's flywheel section. `background` is an art layer drawn behind
+ * as in Fin's flywheel section, from 1280px (stacked below). `background` is an art layer drawn behind
  * the content (section 05's dark-band glow); give it a negative z-index and
  * the section `isolate`, so the content and the hung number stay put.
  */
@@ -37,7 +38,6 @@ export function Reason({
   className = "",
   children,
   aside,
-  asideFrom = "md",
   background,
 }: {
   id: string;
@@ -46,8 +46,6 @@ export function Reason({
   className?: string;
   children: ReactNode;
   aside?: ReactNode;
-  /** Width from which the aside sits beside the text; below it, it drops under the text. */
-  asideFrom?: "md" | "xl";
   background?: ReactNode;
 }) {
   const titleId = `${id}-title`;
@@ -64,12 +62,14 @@ export function Reason({
       {background}
       <div className="col-span-12 md:col-span-10 md:col-start-2">
         {aside ? (
-          <div className={`grid gap-y-10 ${split[asideFrom].grid}`}>
-            <div className={`flex flex-col ${split[asideFrom].text}`}>
+          // Side by side (five columns each) from 1280px, the site's one layout mark.
+          // Below it the aside stacks under the text at a fixed width (TABLET_MAX).
+          <div className="grid gap-y-10 xl:grid-cols-10 xl:gap-x-4">
+            <div className="flex flex-col xl:col-span-5">
               {heading}
               {children}
             </div>
-            <div className={split[asideFrom].aside}>{aside}</div>
+            <div className={`${TABLET_MAX} xl:col-span-5 xl:col-start-6`}>{aside}</div>
           </div>
         ) : (
           <>

@@ -42,7 +42,7 @@ function Backdrop() {
     <>
       <section className="grid grid-cols-12 gap-x-4 px-4 pt-10 md:px-0 md:pt-16">
         <div className="col-span-12 md:col-span-10 md:col-start-2">
-          <p className="max-w-[480px] text-[18px]/[1.3] text-white/60 lg:text-[20px]/[1.25]">
+          <p className="max-w-[480px] text-[18px]/[1.3] text-white/60 md:text-[20px]/[1.25]">
             {hero.subline.lead} <strong className="font-medium text-white/80">{hero.subline.bold}</strong>
           </p>
           <div className="mt-10">

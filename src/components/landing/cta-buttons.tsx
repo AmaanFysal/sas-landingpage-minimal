@@ -5,7 +5,7 @@ type Page = "contact" | "waitlist";
 
 /** Classes for one of Fin's buttons (filled or outlined), shared with the hero. */
 export function buttonClass(variant: "filled" | "outlined", { dark = false, nav = false } = {}) {
-  const size = nav ? "h-8 px-2.5 text-[13px] sm:text-sm md:h-10 md:px-3.5 md:text-base" : "h-10 px-3.5 text-base";
+  const size = nav ? "h-8 px-2.5 text-[13px] md:h-10 md:px-3.5 md:text-base" : "h-10 px-3.5 text-base";
   const base = `inline-flex shrink-0 items-center whitespace-nowrap rounded-[4px] transition-colors ${size}`;
   if (variant === "filled") return `${base} ${dark ? "bg-white text-off-black hover:bg-sky" : "bg-off-black text-sheet hover:bg-sky-ink"}`;
   return `${base} ${
@@ -31,7 +31,7 @@ export function CtaButtons({ dark = false, nav = false, hide }: { dark?: boolean
       )}
       {hide !== "waitlist" && (
         // In the nav on narrow phones, only the primary button fits beside the full logo.
-        <Link href={footer.waitlist.href} className={`${buttonClass("outlined", { dark, nav })} ${nav && hide !== "contact" ? "max-[439px]:hidden" : ""}`}>
+        <Link href={footer.waitlist.href} className={`${buttonClass("outlined", { dark, nav })} ${nav && hide !== "contact" ? "max-[459px]:hidden" : ""}`}>
           {footer.waitlist.label}
         </Link>
       )}
