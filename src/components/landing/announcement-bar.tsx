@@ -22,7 +22,7 @@ export function AnnouncementBar() {
         type="button"
         aria-label="Close"
         onClick={() => setOpen(false)}
-        className="absolute right-2 grid size-7 place-items-center rounded-[4px] hover:bg-ink/5"
+        className="absolute right-[calc(var(--frame)-8px)] grid size-7 place-items-center rounded-[4px] hover:bg-ink/5"
       >
         <svg aria-hidden viewBox="0 0 16 16" className="size-3" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M3 3l10 10M13 3L3 13" />

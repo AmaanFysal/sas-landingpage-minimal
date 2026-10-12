@@ -17,7 +17,21 @@
   --rag-red: #ef4444;
   --rag-amber: #f59e0b;
   --rag-green: #22c55e;
+  /*
+   * Alignment guides. One grid column (12 columns, 16px gutters, 16px inset,
+   * capped at 1920px), and the outer "frame" line that the logo, section
+   * numbers and footer start on (and the badge/ribbon end on, mirrored):
+   * the middle of the outermost column. 16px on phones.
+   */
+  --col: calc((min(100vw, 1920px) - 208px) / 12);
+  --frame: 16px;
   color-scheme: light;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --frame: calc(16px + var(--col) / 2);
+  }
 }
 
 @theme inline {
@@ -39,6 +53,21 @@ body {
   background: var(--page);
   color: var(--ink);
   font-family: var(--font-sans);
+}
+
+/* Page-width row whose content starts and ends on the frame line. */
+@utility frame-x {
+  padding-inline: var(--frame);
+}
+
+/*
+ * Section number hung on the frame line. Positioned against the section (which
+ * starts at the sheet's 16px inset); top stays auto so it sits on the title's
+ * first line.
+ */
+@utility num-hang {
+  position: absolute;
+  left: calc(var(--frame) - 16px);
 }
 
 /* ---- Fin homepage type scale (desktop values at 1440px) ---- */

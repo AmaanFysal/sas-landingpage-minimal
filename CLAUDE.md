@@ -21,7 +21,11 @@ A single-page Next.js (App Router) site deployed on Vercel.
 - **Typeface: Helvetica Neue everywhere** via the system stack (`"Helvetica Neue", Helvetica, Arial`). No web fonts. Windows/Android fall back to Arial unless a Helvetica Neue web licence is bought.
 - **Type sizes and text colours match the fin.ai homepage exactly** (measured at 1440px). Use the `t-*` utilities in `globals.css`: `t-display` 100/95 −4.6px light, `t-callout` 32/38.4 light (section titles and numbers), `t-body-lg` 18/25.2 black 80%, `t-card` 24, `t-title-sm` 20, `t-body` 16 black 70%, `t-quote` 24, `t-caption` 14, `t-label` 12 uppercase.
 - **Container colours match the Fin homepage**: off-white `#faf9f6` page (header, hero, closing, footer); one white sheet inset 16px holding sections 01–04; chalk `#f1eee9` frames and tiles; warm watercolour band (`bg-band-cream`) behind 02 with 70% white blurred cards; chalk-to-white quote panel for 04; 8px grey squares inside frame corners.
-- Grid: 12 columns, 16px gutters, 16px page inset; content in columns 2–11; section numbers hang 40px left of titles.
+- Grid: 12 columns, 16px gutters, 16px page inset; content in columns 2–11 (equal left/right margins).
+- **Alignment frame (owner request):** two vertical guides, mirrored left/right.
+  - Outer "frame" line = middle of column 1 (`--frame` in globals.css, 16px on phones). Logo, section numbers (`num-hang`) and the footer legal line **start** on it. The status badge, the banner ×, and the hero ribbon **end** on its mirror. Use `frame-x` for any new full-width row.
+  - Inner content line = column 2 start / column 11 end: headlines, body, cards, panels.
+  - Surfaces (white sheet, cream band, closing crop marks) sit at the 16px page inset.
 - Accent from the SAS logo: sky `#57B9FF` (squares, highlight, fills), `--sky-ink #0B74B8` for all blue text (same hue, dark enough to read). Don't introduce any other blue. Headings are Fin black `#000`, buttons `#111`.
 - Highlighter phrase in Occupancy: "unprecedented marketing differentiator" (`occupancy.highlight`).
 - Section 05 follows Fin's flywheel: text left, chalk rounded panel right (`loop-diagram.tsx`): STERILISE → MEASURE → LEARN → PROVE, 3s per step (pills + blue arc only). One static caption is centred underneath (`loopCaption`); the per-step captions were removed at the owner's request. Hover/focus pauses it and pills are clickable. Under `prefers-reduced-motion` it is static.

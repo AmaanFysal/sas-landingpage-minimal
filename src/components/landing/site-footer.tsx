@@ -34,7 +34,7 @@ export function SiteFooter() {
           </a>
         </div>
       </section>
-      <div className="mx-auto w-full max-w-[1920px] px-4">
+      <div className="frame-x mx-auto w-full max-w-[1920px]">
         <p className="t-caption border-t border-ink/10 py-6 text-muted">{footer.legal}</p>
       </div>
     </footer>

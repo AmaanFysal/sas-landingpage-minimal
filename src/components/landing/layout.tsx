@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 
 // Fin homepage grid: 16px page inset, 12 columns, 16px gutters. Content sits
-// in columns 2–11; section numbers hang 40px to the left of the title.
+// in columns 2–11; section numbers, the logo and the footer start on the
+// frame line (middle of column 1); see --frame in globals.css.
 
 /** Page-width 12-column grid with the 16px page inset. */
 export function PageGrid({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -37,15 +38,15 @@ export function Reason({
 }) {
   const titleId = `${id}-title`;
   const heading = (
-    <h2 id={titleId} className="t-callout relative max-w-[552px]">
-      <span aria-hidden className="mb-2 block md:absolute md:right-full md:mr-10 md:mb-0">
+    <h2 id={titleId} className="t-callout max-w-[552px]">
+      <span aria-hidden className="mb-2 block md:num-hang md:mb-0">
         {number}
       </span>
       {title}
     </h2>
   );
   return (
-    <section id={id} aria-labelledby={titleId} className={`scroll-mt-6 grid grid-cols-12 gap-x-4 px-4 py-16 md:px-0 ${className}`}>
+    <section id={id} aria-labelledby={titleId} className={`relative scroll-mt-6 grid grid-cols-12 gap-x-4 px-4 py-16 md:px-0 ${className}`}>
       <div className="col-span-12 md:col-span-10 md:col-start-2">
         {aside ? (
           <div className="grid gap-y-10 md:grid-cols-10 md:gap-x-4">
