@@ -219,13 +219,22 @@ body {
     #eef5fa;
 }
 
-/* Deeper sky band behind section 05 (owner request): same logo blue, stronger tint than 02. */
-@utility bg-band-deep {
-  background:
-    radial-gradient(60% 75% at 88% 12%, rgb(87 185 255 / 0.42), transparent 70%),
-    radial-gradient(50% 65% at 8% 92%, rgb(11 116 184 / 0.14), transparent 70%),
-    radial-gradient(45% 55% at 28% 18%, rgb(255 255 255 / 0.55), transparent 70%),
-    color-mix(in srgb, var(--sky) 24%, #ffffff);
+/*
+ * Dark band behind section 05, the "tech" part (owner request): Fin's dark
+ * editorial sections (navy, white text, white/60 for secondary, hairlines at
+ * white/10–20) with a glow from our own render rising from the bottom
+ * (public/art/band-glow.webp). Plain CSS so it beats the t-* text colours.
+ */
+.band-dark {
+  background: var(--night);
+  color: #fff;
+}
+.band-dark .t-body-lg {
+  color: rgb(255 255 255 / 0.7);
+}
+/* 75% (not Fin's 60%) so text stays AA where the glow lightens the panel behind it. */
+.band-dark .t-body {
+  color: rgb(255 255 255 / 0.75);
 }
 
 /* Quote panel: chalk fading to off-white (Fin C-13). */

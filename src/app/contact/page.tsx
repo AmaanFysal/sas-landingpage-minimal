@@ -48,10 +48,16 @@ function Backdrop() {
           <div className="mt-10">
             <CtaButtons dark />
           </div>
-          <p className="mt-5 flex items-center gap-2 text-[14px]/[1.4] text-white/70">
-            <TickIcon dark />
-            {hero.note}
-          </p>
+          <ul className="mt-5 space-y-2 text-[14px]/[1.4] text-white/70">
+            {hero.notes.map((note) => (
+              <li key={note} className="flex items-start gap-2">
+                <span className="flex h-[1.4em] items-center">
+                  <TickIcon dark />
+                </span>
+                {note}
+              </li>
+            ))}
+          </ul>
           <ul className="mt-16 grid gap-4 md:grid-cols-3">
             {deliver.cards.map((card) => (
               <li key={card.title} className="border border-white/10 p-6">

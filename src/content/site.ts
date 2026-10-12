@@ -30,8 +30,13 @@ export const hero = {
   },
   // Outlined button beside "Contact our team" (footer.cta); scrolls to 01.
   howItWorks: { label: "See how it works", href: "#solution-ecosystem" },
-  // Small line under the buttons, after a filled tick.
-  note: "No upfront cost. Fully managed, 24/7/365.",
+  // Small lines under the buttons, each after a filled tick. The Log 6 line
+  // reuses 01's approved claim (ecosystem.cards[0]); 99.9999% is what a
+  // 6-log reduction means (owner asked for the kill rate, 12 Oct 2026).
+  notes: [
+    "Medical Grade Log 6 (99.9999%) sterilised air, independently validated by Ulster University.",
+    "No upfront cost. Fully managed, 24/7/365.",
+  ],
 } as const;
 
 // 2b. "What we deliver" band (new copy supplied by the owner on 12 Oct 2026;

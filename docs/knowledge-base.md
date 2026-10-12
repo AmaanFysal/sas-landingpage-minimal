@@ -81,7 +81,7 @@ and three tagline pills (`Medical Grade Log 6`, `AI Predictive Analysis`,
 - H1: `Spend less on agency and bank staff`
 - Subline: `Clean, sterilised air built to keep your staff well, protect your CQC rating and fill your beds.` **`Now live in a West London care home.`** (last sentence bold)
 - Buttons: `Contact our team` (filled, to /contact) + `See how it works` (outlined, scrolls to 01)
-- Tick line: `No upfront cost. Fully managed, 24/7/365.`
+- Tick lines: `Medical Grade Log 6 (99.9999%) sterilised air, independently validated by Ulster University.` (added 12 Oct 2026 at the owner's request for the kill rate; reuses 01's approved claim, 99.9999% = 6-log reduction. Wording still needs owner sign-off.) and `No upfront cost. Fully managed, 24/7/365.`
 
 ### Band: What we deliver (added 12 Oct 2026, no section number)
 Owner-supplied copy, not in the source HTML. Sits between the hero and section 01.
