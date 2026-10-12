@@ -168,7 +168,7 @@ These are kept verbatim because the rule is exact words. Change them only if the
 
 1. **"optimize"** (Occupancy body) uses US spelling. The rest of the page is UK English (`en-GB`, "Sterilisation"). UK spelling would be "optimise".
 2. **"ILimex"**: check the brand's official capitalisation before launch.
-3. **RAG labels** ("Action Required" / "Cautionary Level" / "Optimal Air Quality") were tooltip-only in the source. They were shown as visible text, then removed with their coloured squares at the owner's request (12 Oct 2026). This changes CEO-approved section 01, so please confirm with the CEO.
+3. **RAG labels** ("Action Required" / "Cautionary Level" / "Optimal Air Quality") were tooltip-only in the source. Showing them as visible text would be more accessible; the words stay the same.
 4. **"PRIMARY FINANCIAL TARGET"** etc. are uppercase only through CSS. The stored text is title case.
 5. **Footer copy says the site is "launching soon"**. This page *is* the interim web presence, so the copy is still accurate.
 6. **© 2026** is hard-coded in the source. It is kept as text, not generated from the current year.

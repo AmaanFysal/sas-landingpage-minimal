@@ -4,6 +4,12 @@ import { LoopDiagram } from "./loop-diagram";
 import { CornerMarks, Square } from "./marks";
 import { ResetMark, WellMark } from "./seals";
 
+const ragColour = {
+  red: "bg-rag-red",
+  amber: "bg-rag-amber",
+  green: "bg-rag-green",
+} as const;
+
 /** Sections 01–05 share one white sheet, as on the Fin homepage. */
 export function NumberedSections() {
   return (
@@ -32,6 +38,21 @@ function Ecosystem() {
                 {card.title}
               </h3>
               <p className="t-body mt-3">{card.body}</p>
+              {"rag" in card && (
+                <ul className="mt-6 space-y-2.5">
+                  {card.rag.map((r, n) => (
+                    <li key={r.status} className="t-caption flex items-center gap-3 text-ink/70">
+                      {/* Blinks like a status LED, one after another (owner request). */}
+                      <span
+                        aria-hidden
+                        className={`rag-blink size-2.5 ${ragColour[r.status]}`}
+                        style={{ animationDelay: `${n * 600}ms` }}
+                      />
+                      {r.label}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </article>
           ))}
         </div>

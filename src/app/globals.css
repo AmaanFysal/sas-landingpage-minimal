@@ -236,6 +236,29 @@ body {
 }
 
 /*
+ * RAG squares in 1.2 blink like status LEDs (owner request): on, a short dip
+ * to dim, on again, each a third of a cycle behind the last (red, amber,
+ * green). Opacity only, so it stays on the compositor. Still for reduced motion.
+ */
+@keyframes rag-blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  60%,
+  90% {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rag-blink {
+    animation: rag-blink 1800ms linear infinite both;
+  }
+}
+
+/*
  * Hero render placement (fin.ai rule: one render, cropped by the panel).
  * Phones: below the text, shown whole but wider than the panel so the sides
  * are trimmed, bleeding off the bottom. Tablets: centred and large, bleeding

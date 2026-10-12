@@ -75,6 +75,12 @@ export const ecosystem = {
       id: "monitoring",
       title: "Kaiterra Monitoring",
       body: "Continuous Indoor Air Quality monitoring linked directly to clear, user-friendly LED displays. Provides real-time status updates using universal visual indicators.",
+      // Red / Amber / Green status dots. Labels were tooltip (title) text.
+      rag: [
+        { status: "red", label: "Action Required" },
+        { status: "amber", label: "Cautionary Level" },
+        { status: "green", label: "Optimal Air Quality" },
+      ],
     },
     {
       id: "predictive-ai",
