@@ -25,6 +25,7 @@ public/
   brand/sas-mark.png        # Logo mark cropped from ../logo-assets
 scripts/air-ribbon/         # three.js scene used to render public/art
 src/lib/air-ribbon-scene.ts # Live (animated) version of the same render, loaded on demand
+scripts/liquid-banner/      # Generates the top banner's liquid art (public/art/banner-liquid-*.webp)
 ```
 
 ## Develop
@@ -49,6 +50,16 @@ Open this URL in a browser to render the single ribbon used in both the hero and
 The PNG is saved to the `out` folder. Trim it, add 40px transparent padding and save it as WebP (quality 90) to `public/art/air-ribbon-loop.webp`. The script can also render zoomed crops (`w`, `h`, `full`, `ox`, `oy`), but the site crops with CSS instead.
 
 The page also animates this render live (a slow liquid ripple) with `src/lib/air-ribbon-scene.ts`, a port of the same scene. Its first frame matches the WebP exactly, so if you re-render with different parameters, update the constants at the top of that file (colours, rotation, the 3000px frame and the trim box `IMG`) so the static image and the live version still line up. Visitors with reduced motion, or without WebGL2, see the WebP only.
+
+## Re-rendering the banner art
+
+The liquid art at both ends of the top banner is generated, not drawn: a domain-warped noise field shaded as a glossy surface in the brand blues, with a sharp swirl edge facing the text, a cut-out, and film grain. Change the seed or the parameters in the script and run:
+
+```bash
+node scripts/liquid-banner/render.mjs --seed 7 --preview /tmp/banner-preview.png
+```
+
+It writes `public/art/banner-liquid-left.webp` and `banner-liquid-right.webp` (2×, 68px tall, transparent background) and an optional preview of both on the banner grey.
 
 ## Deploy to Vercel
 

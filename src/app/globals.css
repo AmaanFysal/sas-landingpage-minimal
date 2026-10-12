@@ -12,6 +12,7 @@
   --ink: #000000; /* Fin headings */
   --off-black: #111111; /* Fin buttons */
   --muted: #626260; /* Fin footer legal */
+  --banner: #e1e2e5; /* Fin's top-banner grey, behind the liquid art */
   --sky: #57b9ff; /* SAS sky (logo): squares, highlight */
   --sky-ink: #0b74b8; /* SAS sky dark enough for text */
   --rag-red: #ef4444;
@@ -41,6 +42,7 @@
   --color-ink: var(--ink);
   --color-off-black: var(--off-black);
   --color-muted: var(--muted);
+  --color-banner: var(--banner);
   --color-sky: var(--sky);
   --color-sky-ink: var(--sky-ink);
   --color-rag-red: var(--rag-red);
@@ -151,17 +153,6 @@ body {
 }
 
 /* ---- Fin container colours ---- */
-
-/* Thin top banner: soft marbled sky (G-01). */
-@utility bg-marble {
-  background:
-    radial-gradient(38% 220% at 10% 40%, rgb(87 185 255 / 0.42), transparent 70%),
-    radial-gradient(28% 200% at 34% 110%, rgb(255 255 255 / 0.95), transparent 70%),
-    radial-gradient(32% 240% at 62% -20%, rgb(60 196 255 / 0.32), transparent 70%),
-    radial-gradient(26% 220% at 88% 60%, rgb(0 32 46 / 0.14), transparent 70%),
-    radial-gradient(30% 200% at 97% 0%, rgb(87 185 255 / 0.3), transparent 70%),
-    #eaf5fd;
-}
 
 /* Soft sky band behind section 02 (SAS logo blue; Fin S-03 band technique). */
 @utility bg-band-sky {
