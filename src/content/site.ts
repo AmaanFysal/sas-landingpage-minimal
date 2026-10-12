@@ -36,6 +36,32 @@ export const hero = {
   ],
 } as const;
 
+// 2b. "What we deliver" band (new copy supplied by the owner on 12 Oct 2026;
+// not in the source HTML). Sits between the hero and 01, with no number.
+export const deliver = {
+  label: "WHAT WE DELIVER",
+  title: "Three results every care home owner cares about.",
+  subline: "All with zero upfront cost.",
+  cards: [
+    {
+      title: "Higher occupancy",
+      line: "Fresher viewings, confident admissions and a visible reason for families to choose your home.",
+      fact: "An empty private bed costs over £66,000 a year in lost fees.*",
+    },
+    {
+      title: "Lower agency costs",
+      line: "Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.",
+      fact: "Being measured now in our 12-month West London proof of concept.",
+    },
+    {
+      title: "CQC reporting, automated",
+      line: "Inspection-ready evidence packs generated every month, ready for your manager to sign off.",
+      fact: "No extra paperwork for your team.",
+    },
+  ],
+  footnote: "*Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).",
+} as const;
+
 // 3. The Solution Ecosystem
 export const ecosystem = {
   title: "The Solution Ecosystem",

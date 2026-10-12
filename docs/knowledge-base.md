@@ -83,6 +83,17 @@ Document language: `en-GB`.
   2. `AI Predictive Analysis`
   3. `CQC Reporting Ready`
 
+### Band: What we deliver (added 12 Oct 2026, no section number)
+Owner-supplied copy, not in the source HTML. Sits between the hero and section 01.
+- Label: `WHAT WE DELIVER`
+- Headline: `Three results every care home owner cares about.`
+- Subline: `All with zero upfront cost.`
+- Card 1: **Higher occupancy**: `Fresher viewings, confident admissions and a visible reason for families to choose your home.` Fact: `An empty private bed costs over £66,000 a year in lost fees.*`
+- Card 2: **Lower agency costs**: `Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.` Fact: `Being measured now in our 12-month West London proof of concept.`
+- Card 3: **CQC reporting, automated**: `Inspection-ready evidence packs generated every month, ready for your manager to sign off.` Fact: `No extra paperwork for your team.`
+- Footnote: `*Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).` (£1,278 × 52 = £66,456, consistent with "over £66,000".)
+- Scroll cue: down arrow linking to section 01 (no words).
+
 ### Section 3: The Solution Ecosystem
 - H2: `The Solution Ecosystem`
 - Card 1: **ILimex Sterilisation**

@@ -1,3 +1,4 @@
+import { Deliver } from "@/components/landing/deliver";
 import { Hero } from "@/components/landing/hero";
 import { NumberedSections } from "@/components/landing/sections";
 import { SiteFooter } from "@/components/landing/site-footer";
@@ -10,6 +11,7 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
+        <Deliver />
         <NumberedSections />
       </main>
       <SiteFooter />
