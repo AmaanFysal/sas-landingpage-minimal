@@ -36,7 +36,7 @@ A single-page Next.js (App Router) site deployed on Vercel.
   - Inner content line = column 2 start / column 11 end: headlines, body, cards, panels.
   - Surfaces (white sheet, cream band, closing crop marks) sit at the 16px page inset.
 - Accent from the SAS logo: sky `#57B9FF` (squares, highlight, fills), `--sky-ink #0B74B8` for all blue text (same hue, dark enough to read). Don't introduce any other blue. Headings are Fin black `#000`, buttons `#111`.
-- Section 03 tiles show the RESET and WELL seals redrawn as SVG in `seals.tsx` (owner request 12 Oct 2026): white line work and lettering on frosted discs, matching the real marks.
+- Section 03 tiles show the RESET and WELL seals redrawn as SVG in `seals.tsx` in **fin.ai's certification-tile style** (owner request 12 Oct 2026). Like Fin's ISO/SOC2/HIPAA tiles, each is grey line work (#AEACA8, ~1.5 stroke) filling the chalk tile, the drawing using the middle ~58%: big lettering hollow (WELL), small lettering solid. They keep the real marks' shapes.
   - The WELL seal's small text reads "v2 ALIGNED", the approved claim, **not** "Health-Safety Rated", which is a separate rating SAS hasn't confirmed it holds. Only change it if the owner confirms that rating.
   - Using these marks normally needs the standard owners' permission; flagged to the owner.
 - Highlighter phrase in Occupancy: "unprecedented marketing differentiator" (`occupancy.highlight`).

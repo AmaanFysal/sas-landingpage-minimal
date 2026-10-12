@@ -93,11 +93,11 @@ function Standards() {
         return (
           <li key={badge}>
             <figure>
-              <div className="relative grid aspect-square place-items-center bg-chalk">
+              <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-chalk">
                 <CornerMarks />
-                <Mark className="w-[80%] drop-shadow-[0_8px_18px_rgb(0_0_0/0.08)]" />
+                <Mark className="size-full" />
               </div>
-              <figcaption className="t-label mt-3 normal-case">
+              <figcaption className="t-label mt-4 normal-case">
                 <span className="text-ink/40">3.{i + 1}</span>&ensp;{badge}
               </figcaption>
             </figure>
