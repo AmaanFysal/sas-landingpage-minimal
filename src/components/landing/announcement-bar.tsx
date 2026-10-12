@@ -9,7 +9,7 @@ export function AnnouncementBar() {
   if (!open) return null;
 
   return (
-    <div className="bg-marble relative flex min-h-[34px] items-center justify-center px-10 py-1.5 text-center text-[12px]/snug text-ink sm:text-[13px]">
+    <div className="bg-marble relative flex min-h-[34px] items-center justify-center px-10 py-1.5 text-center text-xs/snug text-off-black sm:text-sm/5">
       <a href={announcement.href} className="group inline-flex min-w-0 items-center gap-2">
         <span className="underline decoration-ink/30 underline-offset-[3px] group-hover:decoration-ink">
           {announcement.text}

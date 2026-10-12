@@ -1,20 +1,19 @@
 import Image from "next/image";
 import { footer } from "@/content/site";
-import { Container } from "./layout";
 import { CrosshairFrame } from "./marks";
 
-/** Closing CTA framed by crop marks (Fin S-12), then a quiet legal row. */
+/** Closing block framed by crop marks (Fin S-12), then a quiet legal row. */
 export function SiteFooter() {
   const words = footer.title.split(" ");
   const lead = words.slice(0, -1).join(" ");
   const last = words.at(-1);
 
   return (
-    <footer>
-      <section aria-labelledby="closing-title" className="relative mx-2 sm:mx-4">
+    <footer className="mt-4">
+      <section aria-labelledby="closing-title" className="relative mx-4">
         <CrosshairFrame />
-        <Container className="flex flex-col items-center py-20 text-center md:py-28">
-          <h2 id="closing-title" className="display text-[clamp(3.25rem,9vw,8.5rem)]">
+        <div className="flex flex-col items-center px-4 py-20 text-center md:py-28">
+          <h2 id="closing-title" className="t-display">
             <span className="block">{lead}</span>{" "}
             <Image
               src="/art/air-ribbon-close.webp"
@@ -26,18 +25,18 @@ export function SiteFooter() {
             />
             <span className="block">{last}</span>
           </h2>
-          <p className="mt-10 max-w-[34rem] text-lg/relaxed text-ink/70">{footer.body}</p>
+          <p className="t-body-lg mt-10 max-w-[572px]">{footer.body}</p>
           <a
             href={footer.cta.href}
-            className="mt-8 inline-flex h-11 items-center rounded-[4px] bg-ink px-5 text-[15px] text-sheet transition-colors hover:bg-sky-ink"
+            className="mt-8 inline-flex h-10 items-center rounded-[4px] bg-off-black px-3.5 text-base text-sheet transition-colors hover:bg-sky-ink"
           >
             {footer.cta.label}
           </a>
-        </Container>
+        </div>
       </section>
-      <Container className="border-t border-hairline py-6 sm:px-8">
-        <p className="text-[13px] text-ink/55">{footer.legal}</p>
-      </Container>
+      <div className="mx-auto w-full max-w-[1920px] px-4">
+        <p className="t-caption border-t border-ink/10 py-6 text-muted">{footer.legal}</p>
+      </div>
     </footer>
   );
 }

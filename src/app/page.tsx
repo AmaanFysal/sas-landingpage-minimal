@@ -1,5 +1,5 @@
 import { Hero } from "@/components/landing/hero";
-import { Ecosystem, Occupancy, ProofOfConcept, Standards } from "@/components/landing/sections";
+import { NumberedSections } from "@/components/landing/sections";
 import { SiteFooter } from "@/components/landing/site-footer";
 import { SiteHeader } from "@/components/landing/site-header";
 
@@ -10,10 +10,7 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
-        <Ecosystem />
-        <ProofOfConcept />
-        <Standards />
-        <Occupancy />
+        <NumberedSections />
       </main>
       <SiteFooter />
     </>

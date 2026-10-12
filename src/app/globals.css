@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 /*
- * Light theme only, by design. Structure follows the fin.ai system
- * (docs/design-library/fin-ai.md); colours come from the SAS logo.
+ * Light theme only, by design. Sizes, text colours and container colours
+ * are measured from the fin.ai homepage (docs/design-library/fin-ai.md).
+ * Brand accents come from the SAS logo.
  */
 :root {
-  --page: #faf9f6; /* Fin off-white */
-  --sheet: #ffffff; /* inset panels */
-  --chalk: #f1eee9; /* tiles, frames */
-  --ink: #00202e; /* SAS navy (logo) */
-  --sky: #57b9ff; /* SAS sky (logo) — decorative use */
-  --sky-ink: #0b74b8; /* sky dark enough for text on --page */
-  --hairline: rgb(0 32 46 / 0.12);
+  --page: #faf9f6; /* Fin off-white: page, header, hero, closing */
+  --sheet: #ffffff; /* Fin white sheet holding the numbered sections */
+  --chalk: #f1eee9; /* Fin chalk: frames and tiles */
+  --ink: #000000; /* Fin headings */
+  --off-black: #111111; /* Fin buttons */
+  --muted: #626260; /* Fin footer legal */
+  --sky: #57b9ff; /* SAS sky (logo): squares, highlight */
+  --sky-ink: #0b74b8; /* SAS sky dark enough for text */
   --rag-red: #ef4444;
   --rag-amber: #f59e0b;
   --rag-green: #22c55e;
@@ -23,40 +25,103 @@
   --color-sheet: var(--sheet);
   --color-chalk: var(--chalk);
   --color-ink: var(--ink);
+  --color-off-black: var(--off-black);
+  --color-muted: var(--muted);
   --color-sky: var(--sky);
   --color-sky-ink: var(--sky-ink);
-  --color-hairline: var(--hairline);
   --color-rag-red: var(--rag-red);
   --color-rag-amber: var(--rag-amber);
   --color-rag-green: var(--rag-green);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-newsreader);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
   background: var(--page);
   color: var(--ink);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Fin-style mono micro-label (G-06, T-04). */
-@utility label-mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
+/* ---- Fin homepage type scale (desktop values at 1440px) ---- */
+
+/* Hero H1 and closing title: 100/95, −4.6px, light. */
+@utility t-display {
+  font-size: 48px;
+  line-height: 0.95;
+  letter-spacing: -0.046em;
+  font-weight: 300;
+  @media (width >= 48rem) {
+    font-size: 80px;
+  }
+  @media (width >= 64rem) {
+    font-size: 100px;
+  }
+}
+
+/* Numbered section title ("01 Fin is the highest…"): 32/38.4, −1.088px, light. */
+@utility t-callout {
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.034em;
+  font-weight: 300;
+  @media (width >= 64rem) {
+    font-size: 32px;
+  }
+}
+
+/* Body copy under each title: 18/25.2, −0.18px, black 80%. */
+@utility t-body-lg {
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: rgb(0 0 0 / 0.8);
+}
+
+/* Stat card title (Apex cards): 24/24, −0.48px. */
+@utility t-card {
+  font-size: 24px;
   line-height: 1;
-  letter-spacing: 0.06em;
+  letter-spacing: -0.02em;
+}
+
+/* Role tab title: 20/24, −0.2px. */
+@utility t-title-sm {
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Role tab description: 16/24, black 70%. */
+@utility t-body {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(0 0 0 / 0.7);
+}
+
+/* Quote text: 24/27.6, −0.96px. */
+@utility t-quote {
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  @media (width >= 64rem) {
+    font-size: 24px;
+  }
+}
+
+/* Captions and side notes: 14/19.6. */
+@utility t-caption {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Small labels ("[ 01.A ]", "ISO 42001"): 12px, +0.6px, uppercase. */
+@utility t-label {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-/* Large light serif display type (Fin's Serrif role). */
-@utility display {
-  font-family: var(--font-serif), Georgia, serif;
-  font-weight: 300;
-  font-variation-settings: "opsz" 72;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
-}
+/* ---- Fin container colours ---- */
 
 /* Thin top banner: soft marbled sky (G-01). */
 @utility bg-marble {
@@ -69,20 +134,27 @@ body {
     #eaf5fd;
 }
 
-/* Tinted section band (S-03). */
-@utility bg-band {
+/* Warm watercolour band (Fin reason 03, sampled avg #efe1b2). */
+@utility bg-band-cream {
   background:
-    radial-gradient(55% 70% at 12% 18%, rgb(87 185 255 / 0.22), transparent 70%),
-    radial-gradient(45% 60% at 88% 85%, rgb(87 185 255 / 0.2), transparent 70%),
-    radial-gradient(40% 50% at 65% 10%, rgb(255 255 255 / 0.85), transparent 70%),
-    #eef5fa;
+    radial-gradient(30% 42% at 24% 40%, rgb(251 212 143 / 0.9), transparent 70%),
+    radial-gradient(34% 48% at 80% 72%, rgb(237 219 156 / 0.85), transparent 70%),
+    radial-gradient(45% 55% at 62% 12%, rgb(234 232 201 / 0.95), transparent 70%),
+    radial-gradient(38% 50% at 8% 92%, rgb(229 208 144 / 0.7), transparent 70%),
+    radial-gradient(30% 40% at 95% 20%, rgb(245 225 170 / 0.9), transparent 70%),
+    #efe6c2;
 }
 
-/* Highlighter-pen phrase (T-08). */
+/* Quote panel: chalk fading to off-white (Fin C-13). */
+@utility bg-quote {
+  background: linear-gradient(90deg, var(--chalk) 0%, var(--page) 55%, #ffffff 100%);
+}
+
+/* Highlighter-pen phrase (Fin T-08), SAS sky instead of Fin orange. */
 @utility mark-sky {
   background: var(--sky);
   color: var(--ink);
-  padding: 0 0.12em;
+  padding: 0 0.08em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
