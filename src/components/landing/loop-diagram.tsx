@@ -78,21 +78,7 @@ export function LoopDiagram() {
         })}
       </div>
 
-      {/* One caption that follows the active pill (decorative for screen readers). */}
-      <figcaption aria-hidden className="mx-auto mt-6 flex min-h-[3rem] max-w-[440px] items-start gap-3 motion-reduce:hidden">
-        <span className="t-label shrink-0 pt-[0.3em] text-sky-ink">{steps[active].label}</span>
-        <span className="t-body">{steps[active].caption}</span>
-      </figcaption>
-
-      {/* All four captions: shown as a list when motion is reduced, always read by screen readers. */}
-      <ul className="sr-only motion-reduce:not-sr-only motion-reduce:mx-auto motion-reduce:mt-6 motion-reduce:max-w-[440px] motion-reduce:space-y-3">
-        {steps.map((step) => (
-          <li key={step.label} className="flex items-start gap-3">
-            <span className="t-label w-20 shrink-0 pt-[0.3em] text-sky-ink">{step.label}</span>
-            <span className="t-body">{step.caption}</span>
-          </li>
-        ))}
-      </ul>
+      <figcaption className="t-body mx-auto mt-6 max-w-[440px] text-center">{airIntelligence.loopCaption}</figcaption>
     </figure>
   );
 }

@@ -113,13 +113,11 @@ export const airIntelligence = {
     "Our service runs as one continuous loop. Every room is sterilised, measured, learned from and proven, every minute of every day.",
     "SAS Air Intelligence is our AI layer: six AI agents that learn how each room behaves and act before problems start. The longer it runs, the smarter it gets.",
   ],
-  // Clockwise from the top of the loop diagram.
-  loop: [
-    { label: "STERILISE", caption: "iLimex units destroy airborne pathogens in every room." },
-    { label: "MEASURE", caption: "Kaiterra monitors track the air in every room, every minute." },
-    { label: "LEARN", caption: "Air Intelligence learns each room's rhythm and acts ahead of problems." },
-    { label: "PROVE", caption: "Monthly CQC evidence packs, audited by the University of West London." },
-  ],
+  // Pill labels, clockwise from the top of the loop diagram.
+  loop: [{ label: "STERILISE" }, { label: "MEASURE" }, { label: "LEARN" }, { label: "PROVE" }],
+  // Single static caption centred under the diagram.
+  loopCaption:
+    "A fixed rule stays the same. Air Intelligence learns from every room, every day, and gets better with time.",
 } as const;
 
 // 7. Footer

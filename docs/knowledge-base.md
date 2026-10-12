@@ -121,11 +121,8 @@ Owner-supplied copy, not in the source HTML. Sits between Occupancy and the foot
 - Headline: `Rules react. Air Intelligence thinks ahead.`
 - Paragraph 1: `Our service runs as one continuous loop. Every room is sterilised, measured, learned from and proven, every minute of every day.`
 - Paragraph 2: `SAS Air Intelligence is our AI layer: six AI agents that learn how each room behaves and act before problems start. The longer it runs, the smarter it gets.`
-- Loop (clockwise from top), each with its caption:
-  - `STERILISE`: `iLimex units destroy airborne pathogens in every room.`
-  - `MEASURE`: `Kaiterra monitors track the air in every room, every minute.`
-  - `LEARN`: `Air Intelligence learns each room's rhythm and acts ahead of problems.`
-  - `PROVE`: `Monthly CQC evidence packs, audited by the University of West London.`
+- Loop pills (clockwise from top): `STERILISE`, `MEASURE`, `LEARN`, `PROVE`.
+- Caption under the diagram (static): `A fixed rule stays the same. Air Intelligence learns from every room, every day, and gets better with time.`
 - Naming: always "Air Intelligence" / "SAS Air Intelligence"; never "AirCrew".
 
 ### Section 7: Footer
@@ -159,7 +156,7 @@ Source structure: header → dark gradient hero → 3-card grid → PoC banner (
 These are kept verbatim because the rule is exact words. Change them only if the client signs off.
 
 1. **"optimize"** (Occupancy body) uses US spelling. The rest of the page is UK English (`en-GB`, "Sterilisation"). UK spelling would be "optimise".
-2. **"ILimex"**: check the brand's official capitalisation before launch. Section 05 (owner copy) writes "iLimex", so the two now differ on the page. Section 01 is CEO-approved and left as is.
+2. **"ILimex"**: check the brand's official capitalisation before launch.
 3. **RAG labels** ("Action Required" / "Cautionary Level" / "Optimal Air Quality") were tooltip-only in the source. Showing them as visible text would be more accessible; the words stay the same.
 4. **"PRIMARY FINANCIAL TARGET"** etc. are uppercase only through CSS. The stored text is title case.
 5. **Footer copy says the site is "launching soon"**. This page *is* the interim web presence, so the copy is still accurate.
