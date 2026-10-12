@@ -4,9 +4,10 @@
 //
 //   node scripts/liquid-banner/render.mjs [--seed 7] [--preview out.png]
 //
-// The art is a domain-warped noise field (Inigo Quilez's "warp" technique)
-// shaded as a glossy surface, with marbled striations, a sharp organic edge
-// facing the banner text, a cut-out swirl, and film grain.
+// The art is a soft, domain-warped noise field (Inigo Quilez's "warp"
+// technique) mapped to broad bands of brand blue with gentle airbrushed
+// shading, a patch of fine marbled rings, a sharp organic edge facing the
+// banner text with a thin light rim, a cut-out swirl, and film grain.
 import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,12 +25,13 @@ const H = 34; // banner height in CSS px
 
 // Brand palette, dark to light (logo navy → sky-ink → sky → pearl).
 const PALETTE = [
-  [0.0, [0x00, 0x0e, 0x16]],
-  [0.22, [0x00, 0x20, 0x2e]],
-  [0.48, [0x0b, 0x74, 0xb8]],
-  [0.72, [0x57, 0xb9, 0xff]],
-  [0.9, [0xc4, 0xe6, 0xff]],
-  [1.0, [0xf2, 0xf9, 0xff]],
+  [0.0, [0x02, 0x12, 0x1b]],
+  [0.2, [0x00, 0x20, 0x2e]],
+  [0.4, [0x0b, 0x64, 0x9e]],
+  [0.58, [0x4c, 0xa8, 0xec]],
+  [0.74, [0x8f, 0xb4, 0xcf]],
+  [0.88, [0xc9, 0xdb, 0xe8]],
+  [1.0, [0xe9, 0xf0, 0xf5]],
 ];
 
 function rng(seed) {
@@ -115,7 +117,7 @@ function palette(t) {
  * One strip. `side` is where the banner text is ("right" for the left piece).
  * `edge` is the CSS-px distance from the text side where the art ends.
  */
-function renderStrip({ width, side, edge, holes, seed }) {
+function renderStrip({ width, side, edge, holes, marble, seed }) {
   const fbm = makeNoise(seed);
   const grain = rng(seed * 31 + 1);
   const W = width * SCALE;
@@ -124,13 +126,13 @@ function renderStrip({ width, side, edge, holes, seed }) {
 
   // Warped liquid height field at CSS-px coordinates.
   const field = (u, v) => {
-    const px = u / 300;
-    const py = v / 150;
-    const qx = fbm(px, py, 3);
-    const qy = fbm(px + 5.2, py + 1.3, 3);
-    const rx = fbm(px + 3 * qx + 1.7, py + 3 * qy + 9.2, 3);
-    const ry = fbm(px + 3 * qx + 8.3, py + 3 * qy + 2.8, 3);
-    return { f: fbm(px + 3 * rx, py + 3 * ry, 3), rx, ry };
+    const px = u / 340;
+    const py = v / 170;
+    const qx = fbm(px, py, 2);
+    const qy = fbm(px + 5.2, py + 1.3, 2);
+    const rx = fbm(px + 2.2 * qx + 1.7, py + 2.2 * qy + 9.2, 2);
+    const ry = fbm(px + 2.2 * qx + 8.3, py + 2.2 * qy + 2.8, 2);
+    return { f: fbm(px + 2.2 * rx, py + 2.2 * ry, 2), rx, ry };
   };
 
   for (let y = 0; y < HH; y++) {
@@ -152,47 +154,40 @@ function renderStrip({ width, side, edge, holes, seed }) {
       const alpha = smooth(-0.55, 0.55, e);
       if (alpha <= 0) continue;
 
-      // Glossy shading from the field's slope.
+      // Broad, soft bands of colour flowing through the strip.
       const c = field(u, v);
-      const fx = field(u + 0.6, v).f - c.f;
-      const fy = field(u, v + 0.6).f - c.f;
-      const nx = -fx * 11;
-      const ny = -fy * 11;
-      const nl = Math.hypot(nx, ny, 1);
-      const [Nx, Ny, Nz] = [nx / nl, ny / nl, 1 / nl];
-      const L = [-0.45, -0.55, 0.7];
-      const diffuse = Math.max(0, Nx * L[0] + Ny * L[1] + Nz * L[2]);
-      const hx = L[0];
-      const hy = L[1];
-      const hz = L[2] + 1;
-      const hl = Math.hypot(hx, hy, hz);
-      const spec = Math.max(0, (Nx * hx + Ny * hy + Nz * hz) / hl) ** 36;
+      const t = smooth(-0.42, 0.42, c.f + 0.35 * c.rx);
+      let [r, g, b] = palette(1 - t);
 
-      // Colour: mostly deep navy/ink, with sky and pearl where the liquid folds.
-      const t = smooth(-0.3, 0.7, c.f + 0.3 * c.rx);
-      let [r, g, b] = palette(t);
-      const shade = 0.38 + 0.72 * diffuse;
+      // Gentle airbrushed modelling: compare with a sample towards the light.
+      const lit = field(u - 9, v - 6).f - c.f;
+      const shade = Math.min(1.18, Math.max(0.78, 1 + 2.2 * lit));
       r *= shade;
       g *= shade;
       b *= shade;
 
-      // Marbled striations in some regions.
-      const region = smooth(0.05, 0.3, fbm(u / 200 + 40, v / 100 + 12, 2));
-      const stripe = Math.sin(c.f * 90 + c.ry * 12);
-      const line = smooth(0.7, 1, stripe) * region;
-      const dark = smooth(0.7, 1, -stripe) * region;
-      r = mix(r, 0.86, line * 0.4) * (1 - dark * 0.35);
-      g = mix(g, 0.94, line * 0.4) * (1 - dark * 0.35);
-      b = mix(b, 1.0, line * 0.4) * (1 - dark * 0.35);
+      // A patch of fine marbled lines (Fin's agate area): contour lines of the
+      // liquid itself, so they flow with it. Soft, not etched.
+      if (marble) {
+        const reach = Math.abs(d - marble.d) + 30 * fbm(u / 140 + 9, v / 40 + 4, 2);
+        const inside = 1 - smooth(marble.r * 0.5, marble.r, reach);
+        if (inside > 0) {
+          const ring = 0.5 + 0.5 * Math.sin(c.f * 150 + c.ry * 24);
+          const [mr, mg, mb] = palette(0.5 + 0.34 * ring);
+          r = mix(r, mr * shade, inside * 0.65);
+          g = mix(g, mg * shade, inside * 0.65);
+          b = mix(b, mb * shade, inside * 0.65);
+        }
+      }
 
-      // Specular glints and a thin bright rim along the sharp edge.
-      const rim = Math.exp(-((e - 1.4) ** 2) / 1.2) * 0.35;
-      r += spec * 0.9 + rim;
-      g += spec * 0.95 + rim;
-      b += spec + rim;
+      // A thin light rim just inside the sharp edge.
+      const rim = Math.exp(-((e - 1.3) ** 2) / 0.9) * 0.22;
+      r += rim * 0.75;
+      g += rim * 0.9;
+      b += rim;
 
       // Film grain (monochrome).
-      const n = (grain() + grain() - 1) * 0.085;
+      const n = (grain() + grain() - 1) * 0.075;
       const i = (y * W + x) * 4;
       out[i] = Math.round(Math.min(1, Math.max(0, r + n)) * 255);
       out[i + 1] = Math.round(Math.min(1, Math.max(0, g + n)) * 255);
@@ -204,7 +199,14 @@ function renderStrip({ width, side, edge, holes, seed }) {
 }
 
 const pieces = {
-  left: renderStrip({ width: 500, side: "right", edge: 118, holes: [{ d: 205, y: 30, rx: 58, ry: 15 }], seed: SEED }),
+  left: renderStrip({
+    width: 500,
+    side: "right",
+    edge: 118,
+    holes: [{ d: 205, y: 30, rx: 58, ry: 15 }],
+    marble: { d: 470, y: 10, r: 120 },
+    seed: SEED,
+  }),
   right: renderStrip({ width: 600, side: "left", edge: 132, holes: [{ d: 455, y: 2, rx: 38, ry: 12 }], seed: SEED + 101 }),
 };
 

@@ -53,7 +53,7 @@ The page also animates this render live (a slow liquid ripple) with `src/lib/air
 
 ## Re-rendering the banner art
 
-The liquid art at both ends of the top banner is generated, not drawn: a domain-warped noise field shaded as a glossy surface in the brand blues, with a sharp swirl edge facing the text, a cut-out, and film grain. Change the seed or the parameters in the script and run:
+The liquid art at both ends of the top banner is generated, not drawn: a soft, domain-warped noise field mapped to broad, airbrushed bands of the brand blues, with a patch of fine marbled lines that follow the flow, a sharp swirl edge facing the text, a cut-out, and film grain (after fin.ai's banner art). Change the seed or the parameters in the script and run:
 
 ```bash
 node scripts/liquid-banner/render.mjs --seed 7 --preview /tmp/banner-preview.png
