@@ -11,10 +11,10 @@
 type Props = { className?: string };
 
 const LINE = "#AEACA8"; // Fin's tile line grey
-const VIEW = "-66 -66 332 332"; // outer circle (r 98) sits like Fin's outer rings, ~88 of 298
+const VIEW = "-79.5 -79.5 359 359"; // outer circle (r 106) sits like Fin's outer rings, ~88 of 298
 const C = 100;
-const OUTER = 98; // the circle around each seal
-const RING = 3; // its line, heavier than the rest (owner request)
+const OUTER = 106; // the circle around each seal, with room around the mark (owner request)
+const RING = 3.2; // its line, heavier than the rest (owner request)
 const pt = (deg: number, r: number) => {
   const a = (deg * Math.PI) / 180;
   return [+(C + r * Math.cos(a)).toFixed(2), +(C + r * Math.sin(a)).toFixed(2)];
