@@ -206,7 +206,7 @@ export function LoopDiagram() {
 
   return (
     <figure
-      className="rounded-2xl bg-sheet/70 px-6 pb-8 pt-6 backdrop-blur-[24px] md:px-10 md:pb-10 md:pt-8"
+      className="rounded-2xl border border-white/10 bg-night/85 px-6 pb-8 pt-6 backdrop-blur-[24px] md:px-10 md:pb-10 md:pt-8"
       // Keeps playing under the mouse (owner request); only keyboard focus on a
       // pill holds it, so people tabbing through can read each step.
       onFocus={(e) => (paused.current = e.target.matches(":focus-visible"))}
@@ -214,9 +214,9 @@ export function LoopDiagram() {
     >
       <div ref={boxRef} className="relative mx-auto aspect-square w-full max-w-[440px]">
         <svg viewBox="0 0 400 400" className="absolute inset-0 size-full" fill="none" aria-hidden>
-          <circle cx={C} cy={C} r={186} className="stroke-ink/25" strokeWidth="1" strokeDasharray="2 5" />
-          <circle cx={C} cy={C} r={R} className="stroke-ink/30" strokeWidth="1" />
-          <circle cx={C} cy={C} r={92} className="stroke-ink/10" strokeWidth="1" />
+          <circle cx={C} cy={C} r={186} className="stroke-white/25" strokeWidth="1" strokeDasharray="2 5" />
+          <circle cx={C} cy={C} r={R} className="stroke-white/30" strokeWidth="1" />
+          <circle cx={C} cy={C} r={92} className="stroke-white/10" strokeWidth="1" />
           <path ref={lineRef} d={linePath(FIRST.line)} className="stroke-sky" strokeWidth="1.5" />
           {[0, 1].map((i) => (
             <path
@@ -232,9 +232,10 @@ export function LoopDiagram() {
           ))}
         </svg>
 
-        {/* Grey at rest, brand colour while connected (Fin's mark goes black → orange). */}
+        {/* Grey at rest, brand colour while connected (Fin's mark goes black → orange). The
+            on-dark mark has white strokes where the logo is navy. */}
         <Image
-          src="/brand/sas-mark.png"
+          src="/brand/sas-mark-on-dark.png"
           alt=""
           width={249}
           height={233}
@@ -257,7 +258,7 @@ export function LoopDiagram() {
               onClick={() => select(i)}
               style={{ left: `${(p.x / 400) * 100}%`, top: `${(p.y / 400) * 100}%` }}
               className={`t-label absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-1.5 transition-colors motion-reduce:transition-none ${
-                on ? "border-sky bg-sky text-ink duration-100" : "border-ink/25 bg-sheet text-ink/75 duration-300 hover:border-ink/50"
+                on ? "border-sky bg-sky text-ink duration-100" : "border-white/25 bg-night text-white/75 duration-300 hover:border-white/50"
               }`}
             >
               {step.label}
@@ -266,7 +267,9 @@ export function LoopDiagram() {
         })}
       </div>
 
-      <figcaption className="t-body mx-auto mt-6 max-w-[440px] text-center">{airIntelligence.loopCaption}</figcaption>
+      <figcaption className="t-body mx-auto mt-6 max-w-[440px] text-center">
+        {airIntelligence.loopCaption}
+      </figcaption>
     </figure>
   );
 }

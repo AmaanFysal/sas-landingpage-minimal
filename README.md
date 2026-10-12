@@ -23,7 +23,9 @@ src/
 public/
   art/air-ribbon-loop.webp     # The 3D "air ribbon" render (our own), used in hero and closing
   brand/sas-logo*.png       # Full logo with tagline (colour + white), from ../logo-assets V2
-  brand/sas-mark.png        # Mark only (section 05 loop), cropped from ../logo-assets
+  brand/sas-mark.png        # Mark only (favicon source), cropped from ../logo-assets
+  brand/sas-mark-on-dark.png # Mark with white strokes for the dark section 05 loop (scripts/brand/mark-on-dark.mjs)
+  art/band-glow.webp        # Section 05's dark-band glow, blurred from the hero render (scripts/banner-art/glow.mjs)
 scripts/air-ribbon/         # three.js scene used to render public/art
 src/lib/air-ribbon-scene.ts # Live (animated) version of the same render, loaded on demand
 scripts/banner-art/         # Crops the top banner's art from the hero render (public/art/banner-art-*.webp)

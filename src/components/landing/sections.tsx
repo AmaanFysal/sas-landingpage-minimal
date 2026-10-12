@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { airIntelligence, ecosystem, occupancy, proofOfConcept, standards } from "@/content/site";
+import { WithAiName } from "./ai-name";
 import { Reason, Sheet } from "./layout";
 import { LoopDiagram } from "./loop-diagram";
 import { CornerMarks, Square } from "./marks";
@@ -141,8 +143,37 @@ function Occupancy() {
 
 /** 05 — deeper sky band, text left, animated loop right (Fin flywheel). */
 function AirIntelligence() {
+  // Fin's dark two-tone title (T-01): the first sentence at 60% white, the payoff in full white.
+  const [lead, ...rest] = airIntelligence.title.split(". ");
   return (
-    <Reason id="air-intelligence" number="05" title={airIntelligence.title} className="bg-band-deep" aside={<LoopDiagram />}>
+    <Reason
+      id="air-intelligence"
+      number="05"
+      title={
+        rest.length ? (
+          <>
+            <span className="text-white/60">{lead}.</span> <WithAiName text={rest.join(". ")} />
+          </>
+        ) : (
+          <WithAiName text={airIntelligence.title} />
+        )
+      }
+      className="band-dark isolate overflow-hidden"
+      background={
+        // Glow rising from the bottom, blurred from our own hero render (scripts/banner-art/glow.mjs).
+        <Image
+          src="/art/band-glow.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="pointer-events-none -z-10 select-none object-cover object-bottom"
+        />
+      }
+      aside={<LoopDiagram />}
+      // Diagram under the text on phones and tablets (owner request), beside it
+      // from 1280px, where the hero also moves its render beside the text.
+      asideFrom="xl"
+    >
       <div className="mt-4 space-y-4">
         {airIntelligence.paragraphs.map((p) => (
           <p key={p} className="t-body-lg max-w-[572px]">
@@ -151,7 +182,7 @@ function AirIntelligence() {
         ))}
       </div>
       {/* Reserved for a future partner quote. */}
-      <hr className="mt-12 border-ink/10 md:mt-auto" />
+      <hr className="mt-12 border-white/15 xl:mt-auto" />
     </Reason>
   );
 }

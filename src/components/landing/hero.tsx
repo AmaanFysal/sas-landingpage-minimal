@@ -37,10 +37,17 @@ export function Hero() {
             {hero.howItWorks.label}
           </a>
         </div>
-        <p className="t-caption mt-4 flex items-center gap-2 text-ink/70">
-          <TickIcon />
-          {hero.note}
-        </p>
+        {/* Ticks sit on the first line when a note wraps on phones. */}
+        <ul className="t-caption mt-4 space-y-2 text-ink/70">
+          {hero.notes.map((note) => (
+            <li key={note} className="flex items-start gap-2">
+              <span className="flex h-[1.4em] items-center">
+                <TickIcon />
+              </span>
+              {note}
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="hero-art pointer-events-none col-span-12 select-none">
