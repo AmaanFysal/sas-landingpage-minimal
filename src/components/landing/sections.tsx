@@ -134,10 +134,10 @@ function Occupancy() {
   );
 }
 
-/** 05 — text left, animated loop right (Fin flywheel). */
+/** 05 — deeper sky band, text left, animated loop right (Fin flywheel). */
 function AirIntelligence() {
   return (
-    <Reason id="air-intelligence" number="05" title={airIntelligence.title} aside={<LoopDiagram />}>
+    <Reason id="air-intelligence" number="05" title={airIntelligence.title} className="bg-band-deep" aside={<LoopDiagram />}>
       <div className="mt-4 space-y-4">
         {airIntelligence.paragraphs.map((p) => (
           <p key={p} className="t-body-lg max-w-[572px]">

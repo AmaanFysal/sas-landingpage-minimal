@@ -172,6 +172,15 @@ body {
     #eef5fa;
 }
 
+/* Deeper sky band behind section 05 (owner request): same logo blue, stronger tint than 02. */
+@utility bg-band-deep {
+  background:
+    radial-gradient(60% 75% at 88% 12%, rgb(87 185 255 / 0.42), transparent 70%),
+    radial-gradient(50% 65% at 8% 92%, rgb(11 116 184 / 0.14), transparent 70%),
+    radial-gradient(45% 55% at 28% 18%, rgb(255 255 255 / 0.55), transparent 70%),
+    color-mix(in srgb, var(--sky) 24%, #ffffff);
+}
+
 /* Quote panel: chalk fading to off-white (Fin C-13). */
 @utility bg-quote {
   background: linear-gradient(90deg, var(--chalk) 0%, var(--page) 55%, #ffffff 100%);

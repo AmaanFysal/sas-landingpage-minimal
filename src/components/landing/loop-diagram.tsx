@@ -206,7 +206,7 @@ export function LoopDiagram() {
 
   return (
     <figure
-      className="rounded-2xl bg-chalk px-6 pb-8 pt-6 md:px-10 md:pb-10 md:pt-8"
+      className="rounded-2xl bg-sheet/70 px-6 pb-8 pt-6 backdrop-blur-[24px] md:px-10 md:pb-10 md:pt-8"
       onMouseEnter={() => (paused.current = true)}
       onMouseLeave={() => (paused.current = false)}
       onFocus={() => (paused.current = true)}
