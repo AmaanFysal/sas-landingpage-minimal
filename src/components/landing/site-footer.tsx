@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { footer } from "@/content/site";
+import { askAi, footer } from "@/content/site";
+import { aiIcons } from "./ai-icons";
 import { LiquidRibbon } from "./liquid-ribbon";
 import { CtaButtons } from "./cta-buttons";
 import { CrosshairFrame } from "./marks";
@@ -39,11 +40,47 @@ export function SiteFooter() {
   );
 }
 
-/** Quiet legal line on the frame line; also closes the contact and waitlist pages. */
+/**
+ * Quiet last row on the frame line: the legal line, and on the right a small
+ * "Ask an AI to summarise what we do." with one icon per assistant (owner
+ * request). Also closes the contact and waitlist pages.
+ */
 export function LegalRow({ dark = false }: { dark?: boolean }) {
   return (
     <div className="frame-x relative mx-auto w-full max-w-[1920px]">
-      <p className={`t-caption border-t py-6 ${dark ? "border-white/10 text-white/55" : "border-ink/10 text-muted"}`}>{footer.legal}</p>
+      <div className={`flex flex-col gap-4 border-t py-6 xl:flex-row xl:items-center xl:justify-between xl:gap-8 ${dark ? "border-white/10" : "border-ink/10"}`}>
+        <p className={`t-caption ${dark ? "text-white/55" : "text-muted"}`}>{footer.legal}</p>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <p className={`t-caption whitespace-nowrap ${dark ? "text-white/55" : "text-muted"}`}>{askAi.label}</p>
+          <ul className="flex gap-1.5">
+            {askAi.links.map((link) => {
+              const icon = aiIcons[link.icon];
+              return (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ask ${link.name}`}
+                    title={link.name}
+                    className={`grid size-7 place-items-center rounded-[6px] border transition-colors ${
+                      dark
+                        ? "border-white/15 text-white/70 hover:border-white/40 hover:text-white"
+                        : "border-ink/10 bg-sheet text-ink/70 hover:border-ink/30 hover:text-ink"
+                    }`}
+                  >
+                    <svg aria-hidden viewBox={icon.viewBox} className="size-3.5" fill="currentColor" fillRule={icon.evenodd ? "evenodd" : undefined}>
+                      {icon.paths.map((d) => (
+                        <path key={d.slice(0, 24)} d={d} />
+                      ))}
+                    </svg>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

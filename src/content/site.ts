@@ -217,3 +217,20 @@ export const waitlistPage = {
   submit: "Join the waitlist",
   done: { title: "You're on the waitlist", body: "Thank you. We'll be in touch." },
 } as const;
+
+// 9. "Ask an AI" links in the footer (owner request 12 Oct 2026, wording from
+// the owner's reference). Each opens the AI with a prompt that asks it to
+// search for SAS and summarise it. Gemini has no reliable prompt-in-URL
+// support, so its link opens Google's AI Mode (Gemini) instead.
+const askAiPrompt =
+  "Search the web for Sterilised Air Solutions (sterilisedairsolutions.co.uk) and summarise what they do for UK care homes.";
+const q = encodeURIComponent(askAiPrompt);
+export const askAi = {
+  label: "Ask an AI to summarise what we do.",
+  links: [
+    { icon: "chatgpt", name: "ChatGPT", href: `https://chatgpt.com/?hints=search&q=${q}` },
+    { icon: "claude", name: "Claude", href: `https://claude.ai/new?q=${q}` },
+    { icon: "grok", name: "Grok", href: `https://grok.com/?q=${q}` },
+    { icon: "gemini", name: "Gemini", href: `https://www.google.com/search?udm=50&q=${q}` },
+  ],
+} as const;
