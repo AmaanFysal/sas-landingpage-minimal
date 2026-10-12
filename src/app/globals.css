@@ -226,3 +226,34 @@ body {
     transform: none;
   }
 }
+
+/*
+ * Hero render placement (fin.ai rule: one render, cropped by the panel).
+ * Phones/tablets: below the text, shown whole but wider than the panel so the
+ * sides are trimmed, bleeding off the bottom. From 1280px: oversized from
+ * column 8, vertically centred, running off the right edge.
+ */
+.hero-art {
+  width: 124%;
+  margin-left: -12%;
+  margin-bottom: -7%;
+}
+
+@media (width >= 48rem) {
+  .hero-art {
+    width: 112%;
+    margin-left: -6%;
+    margin-bottom: -6%;
+  }
+}
+
+@media (width >= 80rem) {
+  .hero-art {
+    position: absolute;
+    top: 50%;
+    left: calc(7 * (var(--col) + 16px) + 24px);
+    width: calc((5 * var(--col) + 64px) * 1.95);
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}

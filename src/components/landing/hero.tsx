@@ -3,11 +3,13 @@ import { hero } from "@/content/site";
 import { Square } from "./marks";
 
 /**
- * Hero as a container (Fin H-04 style): a white panel inset 16px like the
- * sheet below. From 1280px, text sits on the content grid (columns 2–7) and
- * the right five columns are filled edge to edge by a close-up of the same
- * 3D ribbon that appears whole in the closing block. Narrower screens stack
- * the text above a full-width band of the close-up.
+ * Hero container (white panel inset 16px like the sheet). One render, used
+ * the way fin.ai uses theirs (placement rules: `.hero-art` in globals.css):
+ * - From 1280px: the render is placed oversized from column 8 and runs off the
+ *   panel's right edge, so the panel crops it into a larger close-up.
+ * - Below 1280px: the same render drops under the text, shown whole but wider
+ *   than the panel so its sides are trimmed, bleeding off the bottom edge.
+ * The closing block shows this same render whole.
  */
 export function Hero() {
   return (
@@ -16,7 +18,7 @@ export function Hero() {
       aria-labelledby="hero-title"
       className="relative mx-auto grid w-full max-w-[1888px] grid-cols-12 gap-x-4 overflow-hidden bg-sheet md:w-[calc(100%-2rem)]"
     >
-      <div className="col-span-12 px-4 pb-10 pt-14 md:col-span-10 md:col-start-2 md:px-0 md:pb-14 md:pt-20 xl:col-span-6 xl:col-start-2 xl:py-28">
+      <div className="relative z-10 col-span-12 px-4 pb-6 pt-14 md:col-span-10 md:col-start-2 md:px-0 md:pb-8 md:pt-20 xl:col-span-6 xl:col-start-2 xl:py-28">
         <h1 id="hero-title" className="t-display">
           <span className="block text-balance">{hero.headingLines[0]}</span>{" "}
           <span className="block text-balance">{hero.headingLines[1]}</span>
@@ -36,16 +38,17 @@ export function Hero() {
         </ul>
       </div>
 
-      <div className="relative col-span-12 aspect-[4/3] md:aspect-[16/9] xl:col-span-5 xl:col-start-8 xl:aspect-auto">
+      <div className="hero-art pointer-events-none col-span-12 select-none">
         <Image
-          src="/art/air-ribbon-hero-crop.webp"
+          src="/art/air-ribbon.webp"
           alt=""
-          fill
+          width={2504}
+          height={1683}
           quality={90}
           loading="eager"
           fetchPriority="high"
-          sizes="(min-width: 1280px) 40vw, 100vw"
-          className="pointer-events-none select-none object-cover object-left"
+          sizes="(min-width: 1280px) 80vw, 125vw"
+          className="h-auto w-full"
         />
       </div>
     </section>

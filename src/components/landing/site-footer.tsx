@@ -14,10 +14,10 @@ export function SiteFooter() {
           <h2 id="closing-title" className="t-display">
             <span className="block text-balance">{above}</span>{" "}
             <Image
-              src="/art/air-ribbon-close.webp"
+              src="/art/air-ribbon.webp"
               alt=""
-              width={1503}
-              height={1010}
+              width={2504}
+              height={1683}
               sizes="(min-width: 768px) 360px, 60vw"
               quality={90}
               className="pointer-events-none mx-auto my-[-0.18em] w-[min(60vw,360px)] select-none"

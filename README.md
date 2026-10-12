@@ -21,7 +21,7 @@ src/
     icon.png                # Favicon (SAS mark)
   components/landing/       # Header, hero, numbered sections, footer
 public/
-  art/                      # 3D "air ribbon" renders (our own)
+  art/air-ribbon.webp       # The 3D "air ribbon" render (our own), used in hero and closing
   brand/sas-mark.png        # Logo mark cropped from ../logo-assets
 scripts/air-ribbon/         # three.js scene used to render public/art
 ```
@@ -41,11 +41,11 @@ The ribbon images are rendered from `scripts/air-ribbon/render.html` (three.js, 
 node scripts/air-ribbon/server.mjs "$PWD/scripts/air-ribbon/out" 4319
 ```
 
-Open `http://localhost:4319/?shape=ribbon&size=1800&dist=6.4&env=1.3&keylight=2.6&metal=0.75&rough=0.32&bump=0.9&film=0.1&grainPx=2&rx=-0.6&ry=-0.5&rz=2.2&tm=neutral&sky=3cc4ff&save=air-ribbon-hero` in a browser. This is the satin, grainy metal finish; add `finish=gloss` for the original glossy version. The PNG is saved to the `out` folder; trim it and convert it to WebP into `public/art/`. The closing image uses `rx=-1.15&ry=0.45&rz=0.9` (save as `air-ribbon-close`).
+Open this URL in a browser to render the single ribbon used in both the hero and the closing block (satin, grainy metal; add `finish=gloss` for the original glossy look):
 
-The hero close-up is a zoomed-in window of that same closing framing (`full` is the virtual square frame, `ox`/`oy` the window's top-left, `w`/`h` the output size). Don't trim it:
+`http://localhost:4319/?shape=ribbon&size=3000&dist=6.4&env=1.3&keylight=2.6&metal=0.75&rough=0.32&bump=0.9&film=0.1&grainPx=3&rx=-1.15&ry=0.45&rz=0.9&tm=neutral&sky=3cc4ff&save=air-ribbon`
 
-`http://localhost:4319/?shape=ribbon&w=1440&h=1800&full=3000&ox=90&oy=360&dist=6.4&env=1.3&keylight=2.6&metal=0.75&rough=0.32&bump=0.9&film=0.1&grainPx=2&rx=-1.15&ry=0.45&rz=0.9&tm=neutral&sky=3cc4ff&save=air-ribbon-hero-crop`
+The PNG is saved to the `out` folder. Trim it, add 40px transparent padding and save it as WebP (quality 90) to `public/art/air-ribbon.webp`. The script can also render zoomed crops (`w`, `h`, `full`, `ox`, `oy`), but the site crops with CSS instead.
 
 ## Deploy to Vercel
 
