@@ -74,25 +74,27 @@ Document language: `en-GB`.
 - Badge: `Fully Managed Service 24/7/365`
 
 ### Section 2: Hero
-- H1 (two lines):
-  - `Zero Capex IoT Air Sterilisation`
-  - `For the UK Care Home Market`
-- Subheading: `Transforming clinical safety, proving financial returns, and automating compliance without upfront capital expenditure.`
-- Tagline pills (3):
-  1. `Medical Grade Log 6`
-  2. `AI Predictive Analysis`
-  3. `CQC Reporting Ready`
+Replaced on 12 Oct 2026 with owner-supplied copy (`hero` in site.ts). The source's
+H1 (`Zero Capex IoT Air Sterilisation` / `For the UK Care Home Market`), subheading
+and three tagline pills (`Medical Grade Log 6`, `AI Predictive Analysis`,
+`CQC Reporting Ready`) were removed from the hero at the owner's request.
+- H1: `Spend less on agency and bank staff`
+- Subline: `Clean, sterilised air built to keep your staff well, protect your CQC rating and fill your beds.` **`Now live in a West London care home.`** (last sentence bold)
+- Buttons: `Contact our team` (filled, to /contact) + `See how it works` (outlined, scrolls to 01)
+- Tick line: `No upfront cost. Fully managed, 24/7/365.`
 
 ### Band: What we deliver (added 12 Oct 2026, no section number)
 Owner-supplied copy, not in the source HTML. Sits between the hero and section 01.
 - Label: `WHAT WE DELIVER`
 - Headline: `Three results every care home owner cares about.`
 - Subline: `All with zero upfront cost.`
-- Card 1: **Higher occupancy**: `Fresher viewings, confident admissions and a visible reason for families to choose your home.` Fact: `An empty private bed costs over £66,000 a year in lost fees.*`
-- Card 2: **Lower agency costs**: `Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.` Fact: `Being measured now in our 12-month West London proof of concept.`
-- Card 3: **CQC reporting, automated**: `Inspection-ready evidence packs generated every month, ready for your manager to sign off.` Fact: `No extra paperwork for your team.`
-- Footnote: `*Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).` (£1,278 × 52 = £66,456, consistent with "over £66,000".)
-- Scroll cue: down arrow linking to section 01 (no words).
+Restyled 12 Oct 2026 as Fin-style stat columns (owner copy): number, caption, rule, title, line. Footnote markers are raised numbers (¹ ²), not asterisks (owner request).
+- Column 1: `£66k+` / `a year in fees for every bed you fill` + raised ¹ / **Higher occupancy**: `Fresher viewings, confident admissions and a visible reason for families to choose your home.`
+- Column 2: `£305` / `a year per care worker in extra sickness costs, the cost we're built to cut` + raised ² / **Lower agency costs**: `Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.`
+- Column 3: `12` / `inspection-ready evidence packs a year` / **CQC reporting, automated**: `Generated every month, ready for your manager to sign off. No extra paperwork.`
+- Footnote 1: `Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).` (£1,278 × 52 = £66,456, consistent with "£66k+".)
+- Footnote 2: `Median cost of additional sick days per care worker compared with the UK average. Joseph Rowntree Foundation, The hidden cost of low pay in the social care sector.`
+- Scroll cue: removed at the owner's request.
 
 ### Section 3: The Solution Ecosystem
 - H2: `The Solution Ecosystem`

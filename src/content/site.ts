@@ -19,21 +19,19 @@ export const header = {
   badge: "Fully Managed Service 24/7/365",
 } as const;
 
-// 2. Hero
+// 2. Hero (new copy supplied by the owner on 12 Oct 2026, replacing the
+// source's heading, subheading and tagline pills).
 export const hero = {
-  // Rendered with a line break between the two lines in the source.
-  headingLines: [
-    "Zero Capex IoT Air Sterilisation",
-    "For the UK Care Home Market",
-  ],
-  subheading:
-    "Transforming clinical safety, proving financial returns, and automating compliance without upfront capital expenditure.",
-  // Each tagline links to the part of the page that backs it up.
-  taglines: [
-    { text: "Medical Grade Log 6", href: "#sterilisation" },
-    { text: "AI Predictive Analysis", href: "#predictive-ai" },
-    { text: "CQC Reporting Ready", href: "#cqc-compliance" },
-  ],
+  heading: "Spend less on agency and bank staff",
+  // The subline's last sentence is set in bold.
+  subline: {
+    lead: "Clean, sterilised air built to keep your staff well, protect your CQC rating and fill your beds.",
+    bold: "Now live in a West London care home.",
+  },
+  // Outlined button beside "Contact our team" (footer.cta); scrolls to 01.
+  howItWorks: { label: "See how it works", href: "#solution-ecosystem" },
+  // Small line under the buttons, after a filled tick.
+  note: "No upfront cost. Fully managed, 24/7/365.",
 } as const;
 
 // 2b. "What we deliver" band (new copy supplied by the owner on 12 Oct 2026;
@@ -42,24 +40,31 @@ export const deliver = {
   label: "WHAT WE DELIVER",
   title: "Three results every care home owner cares about.",
   subline: "All with zero upfront cost.",
+  // Fin-style stat columns (owner copy, 12 Oct 2026): big number and caption,
+  // a rule, then the title and one line. `note` is the footnote number shown
+  // raised after the caption (owner asked for numbers instead of asterisks).
   cards: [
     {
+      stat: { value: "£66k+", caption: "a year in fees for every bed you fill", note: 1 },
       title: "Higher occupancy",
       line: "Fresher viewings, confident admissions and a visible reason for families to choose your home.",
-      fact: "An empty private bed costs over £66,000 a year in lost fees.*",
     },
     {
+      stat: { value: "£305", caption: "a year per care worker in extra sickness costs, the cost we're built to cut", note: 2 },
       title: "Lower agency costs",
       line: "Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.",
-      fact: "Being measured now in our 12-month West London proof of concept.",
     },
     {
+      stat: { value: "12", caption: "inspection-ready evidence packs a year" },
       title: "CQC reporting, automated",
-      line: "Inspection-ready evidence packs generated every month, ready for your manager to sign off.",
-      fact: "No extra paperwork for your team.",
+      line: "Generated every month, ready for your manager to sign off. No extra paperwork.",
     },
   ],
-  footnote: "*Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).",
+  // Numbered 1, 2… in order, matching each stat's `note`.
+  footnotes: [
+    "Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).",
+    "Median cost of additional sick days per care worker compared with the UK average. Joseph Rowntree Foundation, The hidden cost of low pay in the social care sector.",
+  ],
 } as const;
 
 // 3. The Solution Ecosystem

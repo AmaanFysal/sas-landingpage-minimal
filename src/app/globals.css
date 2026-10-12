@@ -136,6 +136,33 @@ body {
   color: rgb(0 0 0 / 0.8);
 }
 
+/* Hero subline (Fin's hero with a subline): 20/25, muted (black 60%); 18px on phones. */
+@utility t-lead {
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: rgb(0 0 0 / 0.6);
+  @media (width >= 64rem) {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+}
+
+/* Big stat number ("What we deliver"; Fin's stat blocks): light, tight, brand blue. 48 → 64 → 80. */
+@utility t-stat {
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+  color: var(--sky-ink);
+  @media (width >= 64rem) {
+    font-size: 64px;
+  }
+  @media (width >= 80rem) {
+    font-size: 80px;
+  }
+}
+
 /* Stat card title (Apex cards): 24/24, −0.48px. */
 @utility t-card {
   font-size: 24px;
