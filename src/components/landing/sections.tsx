@@ -1,5 +1,7 @@
-import { ecosystem, occupancy, proofOfConcept, standards } from "@/content/site";
+import Image from "next/image";
+import { airIntelligence, ecosystem, occupancy, proofOfConcept, standards } from "@/content/site";
 import { Reason, Sheet } from "./layout";
+import { LoopDiagram } from "./loop-diagram";
 import { CornerMarks, Square } from "./marks";
 import { ResetMark, WellMark } from "./seals";
 
@@ -9,7 +11,7 @@ const ragColour = {
   green: "bg-rag-green",
 } as const;
 
-/** Sections 01–04 share one white sheet, as on the Fin homepage. */
+/** Sections 01–05 share one white sheet, as on the Fin homepage. */
 export function NumberedSections() {
   return (
     <Sheet>
@@ -17,6 +19,7 @@ export function NumberedSections() {
       <ProofOfConcept />
       <Standards />
       <Occupancy />
+      <AirIntelligence />
     </Sheet>
   );
 }
@@ -127,5 +130,59 @@ function Occupancy() {
         </p>
       </div>
     </Reason>
+  );
+}
+
+/** 05 — text left, animated loop right (Fin flywheel), then the six agents. */
+function AirIntelligence() {
+  return (
+    <Reason
+      id="air-intelligence"
+      number="05"
+      title={airIntelligence.title}
+      aside={<LoopDiagram />}
+      below={<Agents />}
+    >
+      <div className="mt-4 space-y-4">
+        {airIntelligence.paragraphs.map((p) => (
+          <p key={p} className="t-body-lg max-w-[572px]">
+            {p}
+          </p>
+        ))}
+      </div>
+      {/* Reserved for a future partner quote. */}
+      <hr className="mt-12 border-ink/10 md:mt-auto" />
+    </Reason>
+  );
+}
+
+/** "Inside Air Intelligence": one row of six agent tiles. */
+function Agents() {
+  return (
+    <div className="mt-16">
+      <p className="t-label flex items-center gap-2.5 text-ink/60">
+        <Square />
+        {airIntelligence.agentsLabel}
+      </p>
+      <ul className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+        {airIntelligence.agents.map((agent, i) => (
+          <li key={agent.name} className="flex flex-col bg-chalk p-4">
+            {agent.image && (
+              <Image
+                src={agent.image}
+                alt=""
+                width={400}
+                height={400}
+                sizes="(min-width: 1024px) 180px, 45vw"
+                className="mb-4 aspect-square w-full object-contain"
+              />
+            )}
+            <span className="t-label text-ink/40">5.{i + 1}</span>
+            <h3 className="mt-4 text-base font-medium tracking-[-0.01em]">{agent.name}</h3>
+            <p className="t-caption mt-1 text-ink/70">{agent.line}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

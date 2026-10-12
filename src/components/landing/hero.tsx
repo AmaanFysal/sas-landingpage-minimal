@@ -33,6 +33,7 @@ export function Hero() {
         alt=""
         width={1380}
         height={1424}
+        loading="eager"
         fetchPriority="high"
         sizes="(min-width: 1024px) 36vw, 80vw"
         className="pointer-events-none ml-auto mr-[-8%] w-[80%] max-w-[420px] select-none lg:absolute lg:bottom-[4%] lg:right-[3%] lg:mr-0 lg:w-[36vw] lg:max-w-[600px]"

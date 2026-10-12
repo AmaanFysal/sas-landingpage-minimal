@@ -104,6 +104,34 @@ export const occupancy = {
   highlight: "unprecedented marketing differentiator",
 } as const;
 
+// 6b. Section 05 — Air Intelligence (new copy supplied by the owner on
+// 12 Oct 2026; not in the source HTML). Use exactly as written. Always say
+// "Air Intelligence" ("SAS Air Intelligence" on first mention), never "AirCrew".
+export const airIntelligence = {
+  title: "Rules react. Air Intelligence thinks ahead.",
+  paragraphs: [
+    "Our service runs as one continuous loop. Every room is sterilised, measured, learned from and proven, every minute of every day.",
+    "SAS Air Intelligence is our AI layer: six AI agents that learn how each room behaves and act before problems start. The longer it runs, the smarter it gets.",
+  ],
+  // Clockwise from the top of the loop diagram.
+  loop: [
+    { label: "STERILISE", caption: "iLimex units destroy airborne pathogens in every room." },
+    { label: "MEASURE", caption: "Kaiterra monitors track the air in every room, every minute." },
+    { label: "LEARN", caption: "Air Intelligence learns each room's rhythm and acts ahead of problems." },
+    { label: "PROVE", caption: "Monthly CQC evidence packs, audited by the University of West London." },
+  ],
+  agentsLabel: "Inside Air Intelligence",
+  // `image` is filled in once the character PNGs are supplied (public/agents/).
+  agents: [
+    { name: "The Inspector", line: "proves every room gets clean air", image: null },
+    { name: "The Conductor", line: "matches clean air to how hard a room is breathing", image: null },
+    { name: "The Engineer", line: "finds faults and sends the fix", image: null },
+    { name: "The Guardian", line: "protects the air staff share", image: null },
+    { name: "The Responder", line: "takes charge when an outbreak starts", image: null },
+    { name: "The Detective", line: "works out what is changing the air", image: null },
+  ] as { name: string; line: string; image: string | null }[],
+} as const;
+
 // 7. Footer
 export const footer = {
   title: "Sterilised Air Solutions",

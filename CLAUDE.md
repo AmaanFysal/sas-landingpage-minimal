@@ -6,7 +6,9 @@ A single-page Next.js (App Router) site deployed on Vercel.
 
 ## Content rules (non-negotiable)
 - All copy lives in `src/content/site.ts`, taken verbatim from `docs/reference/source.html`.
-- Keep the **exact words** and the **exact section order**: Header → Hero → The Solution Ecosystem → Proof of Concept → Global Environmental Standards → Occupancy → Footer.
+- Keep the **exact words** and the **exact section order**: Header → Hero → 01 The Solution Ecosystem → 02 Proof of Concept → 03 Global Environmental Standards → 04 Occupancy → 05 Air Intelligence → Footer.
+- **Sections 01–04 are CEO-approved: never change their text, order or numbering.**
+- Section 05 copy was supplied by the owner (not in the source HTML); it lives in `airIntelligence` in site.ts. Always write "Air Intelligence" ("SAS Air Intelligence" on first mention). **Never "AirCrew".** No extra claims, statistics or technical detail in 05.
 - Never hard-code copy in components. Import it from `@/content/site`.
 - Copy questions and flagged issues are in `docs/knowledge-base.md` §4. Don't "fix" them silently.
 - **No added label words**, ever (no "Learn more", running headers, etc.). The owner thinks extra labels look AI-generated. **Numbers are welcome**: sections are numbered 01–04 and items 1.1, 2.1, 3.1….
@@ -21,13 +23,15 @@ A single-page Next.js (App Router) site deployed on Vercel.
 - Grid: 12 columns, 16px gutters, 16px page inset; content in columns 2–11; section numbers hang 40px left of titles.
 - Accent from the SAS logo: sky `#57B9FF` (squares, highlight), `--sky-ink #0B74B8` for accent text. Headings are Fin black `#000`, buttons `#111`.
 - Highlighter phrase in Occupancy: "unprecedented marketing differentiator" (`occupancy.highlight`).
+- Section 05 follows Fin's flywheel: text left, chalk rounded panel right (`loop-diagram.tsx`): STERILISE → MEASURE → LEARN → PROVE, 3s per step. Hover/focus pauses it and pills are clickable. Under `prefers-reduced-motion` it is static and shows all four captions as a list.
+- Agent tiles: drop the six character PNGs into `public/agents/` and set each `image` in `airIntelligence.agents`. Tiles render text-only until then. The empty rule under the 05 text column is reserved for a partner quote.
 - 3D art (`public/art/air-ribbon-*.webp`) is our own three.js render. Regenerate it with `scripts/air-ribbon/` (see README). The logo mark in `public/brand/` is cropped from `../logo-assets` without its tagline.
 
 ## Design direction
 - Style reference: fin.ai. The element library is `docs/design-library/fin-ai.md`; refer to elements by ID (e.g. `C-07`). §9 maps elements to our sections. Use Fin's patterns, never Fin's copy, logos or 3D assets.
 - Light theme only. No dark mode.
 - Minimal, modern, "AI-native" feel. Generous whitespace, thin borders.
-- No scroll-triggered animations, parallax, marquees, carousels or auto-playing motion. Small hover states are fine.
+- No scroll-triggered animations, parallax, marquees, carousels or auto-playing motion. Small hover states are fine. **Only exception: the section 05 loop diagram** (owner request), which must keep respecting reduced motion.
 - Keep scrolling short. Few sections, nothing padded out.
 - Mobile-first and accessible: semantic headings, visible RAG labels, AA contrast.
 
