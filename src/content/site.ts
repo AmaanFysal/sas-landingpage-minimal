@@ -46,16 +46,16 @@ export const deliver = {
   title: "Three results every care home owner cares about.",
   subline: "All with zero upfront cost.",
   // Fin-style stat columns (owner copy, 12 Oct 2026), result first: the title,
-  // the big number and caption, a rule, then one line. `note` is the footnote number shown
-  // raised after the caption (owner asked for numbers instead of asterisks).
+  // the big number and caption, a rule, then one line. No footnotes (removed at
+  // the owner's request; sources are recorded in docs/knowledge-base.md).
   cards: [
     {
-      stat: { value: "£66k+", caption: "a year in fees for every bed you fill", note: 1 },
+      stat: { value: "£66k+", caption: "a year in fees for every bed you fill" },
       title: "Higher occupancy",
       line: "Fresher viewings, confident admissions and a visible reason for families to choose your home.",
     },
     {
-      stat: { value: "£305", caption: "a year per care worker in extra sickness costs, the cost we're built to cut", note: 2 },
+      stat: { value: "£305", caption: "a year per care worker in extra sickness costs, the cost we're built to cut" },
       title: "Lower agency costs",
       line: "Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.",
     },
@@ -64,11 +64,6 @@ export const deliver = {
       title: "CQC reporting, automated",
       line: "Generated every month, ready for your manager to sign off. No extra paperwork.",
     },
-  ],
-  // Numbered 1, 2… in order, matching each stat's `note`.
-  footnotes: [
-    "Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).",
-    "Median cost of additional sick days per care worker compared with the UK average. Joseph Rowntree Foundation, The hidden cost of low pay in the social care sector.",
   ],
 } as const;
 

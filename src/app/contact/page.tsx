@@ -65,7 +65,6 @@ function Backdrop() {
                 <p className="mt-6 text-[48px]/none font-light tracking-[-0.04em] text-sky">{card.stat.value}</p>
                 <p className="mt-3 text-[14px]/[1.4] text-white/50">
                   {card.stat.caption}
-                  {"note" in card.stat && <sup>{card.stat.note}</sup>}
                 </p>
                 <p className="mt-8 border-t border-white/10 pt-6 text-base/[1.5] text-white/60">{card.line}</p>
               </li>

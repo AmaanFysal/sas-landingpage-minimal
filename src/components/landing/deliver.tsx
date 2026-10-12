@@ -3,7 +3,7 @@ import { PageGrid, TABLET_MAX } from "./layout";
 import { CountUp } from "./count-up";
 import { Square } from "./marks";
 
-/** Un-numbered band between the hero and 01: three outcome stats and their footnotes. */
+/** Un-numbered band between the hero and 01: three outcome stats. */
 export function Deliver() {
   return (
     <section id="what-we-deliver" aria-labelledby="deliver-title" className="py-16 md:py-24">
@@ -37,20 +37,11 @@ export function Deliver() {
                 </p>
                 <p className="t-caption mt-3 max-w-[280px] text-pretty text-muted">
                   {card.stat.caption}
-                  {"note" in card.stat && <sup>{card.stat.note}</sup>}
-                </p>
+                  </p>
                 <p className="t-body mt-8 border-t border-ink/10 pt-6">{card.line}</p>
               </li>
             ))}
           </ul>
-
-          <div className="t-caption mt-12 space-y-1 text-muted">
-            {deliver.footnotes.map((note, i) => (
-              <p key={note}>
-                <sup>{i + 1}</sup> {note}
-              </p>
-            ))}
-          </div>
         </div>
       </PageGrid>
 
