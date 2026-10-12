@@ -88,12 +88,12 @@ Owner-supplied copy, not in the source HTML. Sits between the hero and section 0
 - Label: `WHAT WE DELIVER`
 - Headline: `Three results every care home owner cares about.`
 - Subline: `All with zero upfront cost.`
-Restyled 12 Oct 2026 as Fin-style stat columns (owner copy), result first: title, number, caption, rule, line. Footnote markers are raised numbers (¹ ²), not asterisks (owner request).
-- Column 1: **Higher occupancy** / `£66k+` / `a year in fees for every bed you fill` + raised ¹ / `Fresher viewings, confident admissions and a visible reason for families to choose your home.`
-- Column 2: **Lower agency costs** / `£305` / `a year per care worker in extra sickness costs, the cost we're built to cut` + raised ² / `Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.`
+Restyled 12 Oct 2026 as Fin-style stat columns (owner copy), result first: title, number, caption, rule, line. No footnotes are shown on the page (removed at the owner's request); the sources are kept below for reference.
+- Column 1: **Higher occupancy** / `£66k+` / `a year in fees for every bed you fill` / `Fresher viewings, confident admissions and a visible reason for families to choose your home.`
+- Column 2: **Lower agency costs** / `£305` / `a year per care worker in extra sickness costs, the cost we're built to cut` / `Protecting the air your staff share, so fewer shifts are lost to sickness and covered by agency staff.`
 - Column 3: **CQC reporting, automated** / `12` / `inspection-ready evidence packs a year` / `Generated every month, ready for your manager to sign off. No extra paperwork.`
-- Footnote 1: `Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).` (£1,278 × 52 = £66,456, consistent with "£66k+".)
-- Footnote 2: `Median cost of additional sick days per care worker compared with the UK average. Joseph Rowntree Foundation, The hidden cost of low pay in the social care sector.`
+- Source for £66k+ (not shown): `Based on an average private residential fee of £1,278 a week (LaingBuisson, 2024/25).` (£1,278 × 52 = £66,456, consistent with "£66k+".)
+- Source for £305 (not shown): `Median cost of additional sick days per care worker compared with the UK average. Joseph Rowntree Foundation, The hidden cost of low pay in the social care sector.`
 - Scroll cue: removed at the owner's request.
 
 ### Section 3: The Solution Ecosystem
