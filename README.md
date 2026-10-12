@@ -25,7 +25,7 @@ public/
   brand/sas-mark.png        # Logo mark cropped from ../logo-assets
 scripts/air-ribbon/         # three.js scene used to render public/art
 src/lib/air-ribbon-scene.ts # Live (animated) version of the same render, loaded on demand
-scripts/liquid-banner/      # Generates the top banner's liquid art (public/art/banner-liquid-*.webp)
+scripts/banner-art/         # Crops the top banner's art from the hero render (public/art/banner-art-*.webp)
 ```
 
 ## Develop
@@ -51,15 +51,19 @@ The PNG is saved to the `out` folder. Trim it, add 40px transparent padding and 
 
 The page also animates this render live (a slow liquid ripple) with `src/lib/air-ribbon-scene.ts`, a port of the same scene. Its first frame matches the WebP exactly, so if you re-render with different parameters, update the constants at the top of that file (colours, rotation, the 3000px frame and the trim box `IMG`) so the static image and the live version still line up. Visitors with reduced motion, or without WebGL2, see the WebP only.
 
-## Re-rendering the banner art
+## Re-making the banner art
 
-The liquid art at both ends of the top banner is generated, not drawn: a soft, domain-warped noise field mapped to broad, airbrushed bands of the brand blues, with a patch of fine marbled lines that follow the flow, a sharp swirl edge facing the text, a cut-out, and film grain (after fin.ai's banner art). Change the seed or the parameters in the script and run:
+The top banner's art is made the way fin.ai makes theirs: close-up crops of the 3D render (our hero ribbon, `public/art/air-ribbon-loop.webp`), so it is the same object and colours. The crop windows are set at the top of the script. To regenerate after re-rendering the ribbon, run:
 
 ```bash
-node scripts/liquid-banner/render.mjs --seed 7 --preview /tmp/banner-preview.png
+node scripts/banner-art/crop.mjs --preview /tmp
 ```
 
-It writes `public/art/banner-liquid-left.webp` and `banner-liquid-right.webp` (2×, 68px tall, transparent background) and an optional preview of both on the banner grey.
+It writes three files to `public/art`:
+
+- `banner-art-left.webp`: 744×68px, the sky-blue sweep, for widths from 1024px.
+- `banner-art-right.webp`: 938×68px, the navy bulb, dark under the white ×.
+- `banner-art-mobile.webp`: 1170×102px, the same shapes soft and grainy on the darker grey, used below 1024px.
 
 ## Contact and waitlist forms
 

@@ -169,6 +169,8 @@ export const footer = {
 // to its section. Swap this for a future announcement when there is one.
 export const announcement = {
   text: proofOfConcept.title,
+  // Small screens show the first part only (Fin shortens its banner the same way).
+  shortText: proofOfConcept.title.split(":")[0],
   href: "#proof-of-concept",
 } as const;
 
