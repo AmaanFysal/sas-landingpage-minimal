@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { footer } from "@/content/site";
+import { LiquidRibbon } from "./liquid-ribbon";
 import { CrosshairFrame } from "./marks";
 
 /** Closing block framed by crop marks (Fin S-12), then a quiet legal row. */
@@ -13,15 +14,17 @@ export function SiteFooter() {
         <div className="flex flex-col items-center px-4 py-20 text-center md:py-28">
           <h2 id="closing-title" className="t-display">
             <span className="block text-balance">{above}</span>{" "}
-            <Image
-              src="/art/air-ribbon-loop.webp"
-              alt=""
-              width={2300}
-              height={2374}
-              sizes="(min-width: 768px) 340px, 56vw"
-              quality={90}
-              className="pointer-events-none mx-auto my-[-0.2em] w-[min(56vw,340px)] select-none"
-            />
+            <LiquidRibbon className="pointer-events-none mx-auto my-[-0.2em] w-[min(56vw,340px)] select-none">
+              <Image
+                src="/art/air-ribbon-loop.webp"
+                alt=""
+                width={2300}
+                height={2374}
+                sizes="(min-width: 768px) 340px, 56vw"
+                quality={90}
+                className="h-auto w-full"
+              />
+            </LiquidRibbon>
             <span className="block text-balance">{below}</span>
           </h2>
           <p className="t-body-lg mt-10 max-w-[572px]">{footer.body}</p>

@@ -24,6 +24,7 @@ public/
   art/air-ribbon-loop.webp     # The 3D "air ribbon" render (our own), used in hero and closing
   brand/sas-mark.png        # Logo mark cropped from ../logo-assets
 scripts/air-ribbon/         # three.js scene used to render public/art
+src/lib/air-ribbon-scene.ts # Live (animated) version of the same render, loaded on demand
 ```
 
 ## Develop
@@ -46,6 +47,8 @@ Open this URL in a browser to render the single ribbon used in both the hero and
 `http://localhost:4319/?shape=ribbon&size=3000&dist=6.4&env=1.3&keylight=2.6&metal=0.75&rough=0.32&bump=0.9&film=0.1&grainPx=3&rx=-0.6&ry=-0.5&rz=2.2&tm=neutral&sky=3cc4ff&save=air-ribbon`
 
 The PNG is saved to the `out` folder. Trim it, add 40px transparent padding and save it as WebP (quality 90) to `public/art/air-ribbon-loop.webp`. The script can also render zoomed crops (`w`, `h`, `full`, `ox`, `oy`), but the site crops with CSS instead.
+
+The page also animates this render live (a slow liquid ripple) with `src/lib/air-ribbon-scene.ts`, a port of the same scene. Its first frame matches the WebP exactly, so if you re-render with different parameters, update the constants at the top of that file (colours, rotation, the 3000px frame and the trim box `IMG`) so the static image and the live version still line up. Visitors with reduced motion, or without WebGL2, see the WebP only.
 
 ## Deploy to Vercel
 

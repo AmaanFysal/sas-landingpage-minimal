@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { hero } from "@/content/site";
+import { LiquidRibbon } from "./liquid-ribbon";
 import { Square } from "./marks";
 
 /**
@@ -39,17 +40,19 @@ export function Hero() {
       </div>
 
       <div className="hero-art pointer-events-none col-span-12 select-none">
-        <Image
-          src="/art/air-ribbon-loop.webp"
-          alt=""
-          width={2300}
-          height={2374}
-          quality={90}
-          loading="eager"
-          fetchPriority="high"
-          sizes="(min-width: 1280px) 80vw, 125vw"
-          className="h-auto w-full"
-        />
+        <LiquidRibbon>
+          <Image
+            src="/art/air-ribbon-loop.webp"
+            alt=""
+            width={2300}
+            height={2374}
+            quality={90}
+            loading="eager"
+            fetchPriority="high"
+            sizes="(min-width: 1280px) 80vw, 125vw"
+            className="h-auto w-full"
+          />
+        </LiquidRibbon>
       </div>
     </section>
   );
