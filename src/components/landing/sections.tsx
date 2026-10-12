@@ -62,12 +62,12 @@ function ProofOfConcept() {
     <Reason id="proof-of-concept" number="02" title={proofOfConcept.title} className="bg-band-sky">
       <p className="t-body-lg mt-4 max-w-[572px]">{proofOfConcept.intro}</p>
       <div className="mt-10 grid grid-cols-10 gap-x-4">
-        <div className="col-span-10 grid md:col-span-8 md:col-start-2 md:grid-cols-3">
+        <div className="col-span-10 grid gap-4 lg:col-span-8 lg:col-start-2 lg:grid-cols-3 lg:gap-0">
           {proofOfConcept.stats.map((stat, i) => (
             <article
               key={stat.id}
               id={stat.id}
-              className="relative flex scroll-mt-6 flex-col justify-between gap-12 bg-sheet/70 p-6 backdrop-blur-[24px] md:min-h-[316px]"
+              className="relative flex scroll-mt-6 flex-col justify-between gap-12 bg-sheet/70 p-6 backdrop-blur-[24px] lg:min-h-[316px]"
             >
               <CornerMarks className="bg-ink/20" />
               <div>

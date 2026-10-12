@@ -16,7 +16,7 @@ export function Hero() {
       aria-labelledby="hero-title"
       className="relative mx-auto grid w-full max-w-[1888px] grid-cols-12 gap-x-4 overflow-hidden bg-sheet md:w-[calc(100%-2rem)]"
     >
-      <div className="col-span-12 px-4 pb-10 pt-14 md:col-span-10 md:col-start-2 md:px-0 md:pb-14 md:pt-20 xl:col-span-6 xl:py-28">
+      <div className="col-span-12 px-4 pb-10 pt-14 md:col-span-10 md:col-start-2 md:px-0 md:pb-14 md:pt-20 xl:col-span-6 xl:col-start-2 xl:py-28">
         <h1 id="hero-title" className="t-display">
           <span className="block text-balance">{hero.headingLines[0]}</span>{" "}
           <span className="block text-balance">{hero.headingLines[1]}</span>
