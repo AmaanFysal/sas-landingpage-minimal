@@ -9,15 +9,16 @@ export const metadata: Metadata = {
 };
 
 /**
- * "Join the waitlist": the light counterpart, after Fin's demo form (design
- * library F-02): off-white page, centred heading, small caps labels, chalk
- * fields and a full-width black button.
+ * "Join the waitlist", built like fin.ai's /contact-sales form (the one that
+ * asks for company size): plain white page and nav, content starting 112px under
+ * the nav, a 472px column with the heading left-aligned on phones and centred
+ * from tablet up.
  */
 export default function WaitlistPage() {
   return (
-    <div className="flex min-h-dvh flex-col bg-page">
-      <SiteHeader inner current="waitlist" />
-      <main className="flex flex-1 justify-center px-4 pb-24 pt-14 md:pt-24">
+    <div className="flex min-h-dvh flex-col bg-sheet">
+      <SiteHeader white inner current="waitlist" />
+      <main className="flex flex-1 justify-center px-4 pb-24 pt-20 md:pt-28">
         <LeadForm kind="waitlist" copy={waitlistPage} variant="page" />
       </main>
       <LegalRow />

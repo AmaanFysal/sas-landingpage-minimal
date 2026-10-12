@@ -203,7 +203,8 @@ export const formText = {
 export const contactPage = {
   title: "Contact our team",
   // Two-tone heading: muted first line, strong second line.
-  titleLines: ["Talk to the team behind", "Sterilised Air Solutions"],
+  // Kept short so it sits on two lines like Fin's ("Let's get your / Fin demo started").
+  titleLines: ["Let's talk about", "safer air"],
   next: "Continue",
   submit: "Send",
   done: { title: "Thank you", body: "Your message is with our team. We'll be in touch." },

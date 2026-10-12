@@ -13,18 +13,21 @@ import { Square } from "./marks";
  * - The home page shows the bar and links the logo to the top; inner pages
  *   (`inner`) link it home, skip the bar and drop their own button (`current`).
  * - `dark` is Fin's dark-page variant: white logo, text and primary button.
+ * - `white` gives the light variant a pure white bar (Fin's form pages).
  */
 export function SiteHeader({
   dark = false,
+  white = false,
   inner = false,
   current,
 }: {
   dark?: boolean;
+  white?: boolean;
   inner?: boolean;
   current?: "contact" | "waitlist";
 }) {
   return (
-    <header className={`sticky top-0 z-50 ${dark ? "bg-night" : "bg-page"}`}>
+    <header className={`sticky top-0 z-50 ${dark ? "bg-night" : white ? "bg-sheet" : "bg-page"}`}>
       {!inner && <AnnouncementBar />}
       <div className="frame-x mx-auto flex h-16 w-full max-w-[1920px] items-center justify-between gap-4 md:h-[74px]">
         <Link href={inner ? "/" : "#top"} aria-label={`${header.logo.lead}${header.logo.accent}`} className="flex shrink-0 items-center gap-2.5">
