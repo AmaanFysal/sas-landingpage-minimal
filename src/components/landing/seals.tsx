@@ -14,6 +14,7 @@ const LINE = "#AEACA8"; // Fin's tile line grey
 const VIEW = "-66 -66 332 332"; // outer circle (r 98) sits like Fin's outer rings, ~88 of 298
 const C = 100;
 const OUTER = 98; // the circle around each seal
+const RING = 3; // its line, heavier than the rest (owner request)
 const pt = (deg: number, r: number) => {
   const a = (deg * Math.PI) / 180;
   return [+(C + r * Math.cos(a)).toFixed(2), +(C + r * Math.sin(a)).toFixed(2)];
@@ -41,7 +42,7 @@ export function ResetMark({ className }: Props) {
   return (
     <svg viewBox={VIEW} className={className} aria-hidden>
       <g fill="none" stroke={LINE} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx={C} cy={C} r={OUTER} />
+        <circle cx={C} cy={C} r={OUTER} strokeWidth={RING} />
         {/* top-left quarter and the hand dropping from 12 o'clock */}
         <path d={`${arc(204, 270, r)}V66`} />
         {/* lower ring, 3 o'clock round to 9, with the stubs at cap height */}
@@ -79,7 +80,7 @@ export function WellMark({ className }: Props) {
   return (
     <svg viewBox={VIEW} className={className} aria-hidden>
       <g fill="none" stroke={LINE} strokeWidth="1.2" strokeLinejoin="round">
-        <circle cx={C} cy={C} r={OUTER} strokeWidth="1.5" />
+        <circle cx={C} cy={C} r={OUTER} strokeWidth={RING} />
         {segments.map(([a0, a1, rr]) => (
           <path key={`${a0}-${rr}`} d={band(a0, a1, rr, w)} />
         ))}
