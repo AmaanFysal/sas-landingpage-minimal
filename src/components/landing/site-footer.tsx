@@ -19,6 +19,7 @@ export function SiteFooter() {
               width={1503}
               height={1010}
               sizes="(min-width: 768px) 360px, 60vw"
+              quality={90}
               className="pointer-events-none mx-auto my-[-0.18em] w-[min(60vw,360px)] select-none"
             />
             <span className="block text-balance">{below}</span>

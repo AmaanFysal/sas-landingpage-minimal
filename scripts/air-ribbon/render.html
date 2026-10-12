@@ -45,7 +45,7 @@ const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture;
 scene.environmentIntensity = P("env", 1.0);
 
-const key = new THREE.DirectionalLight(0xffffff, P("key", 1.6));
+const key = new THREE.DirectionalLight(0xffffff, P("keylight", 1.6));
 key.position.set(-3, 5, 4);
 scene.add(key);
 const rim = new THREE.DirectionalLight(0xffffff, P("rim", 0.8));
@@ -54,7 +54,7 @@ scene.add(rim);
 
 // Sweep a rounded-rectangle cross-section along a closed curve with a twist.
 function sweep({ curve, twist, width, thick, nu = 900, nv = 72, colorAt }) {
-  const pos = [], col = [], idx = [];
+  const pos = [], col = [], idx = [], uvs = [];
   const T = new THREE.Vector3(), N = new THREE.Vector3(), B = new THREE.Vector3();
   const up = new THREE.Vector3(0, 0, 1);
   const se = (a, n) => Math.sign(a) * Math.pow(Math.abs(a), n);
@@ -80,6 +80,7 @@ function sweep({ curve, twist, width, thick, nu = 900, nv = 72, colorAt }) {
       const edge = Math.abs(Math.cos(v));
       const cc = c.clone().lerp(PEARL, 0.12 * edge * edge);
       col.push(cc.r, cc.g, cc.b);
+      uvs.push(i / nu, j / nv);
     }
   }
   for (let i = 0; i < nu; i++)
@@ -90,6 +91,7 @@ function sweep({ curve, twist, width, thick, nu = 900, nv = 72, colorAt }) {
   const g = new THREE.BufferGeometry();
   g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
   g.setAttribute("color", new THREE.Float32BufferAttribute(col, 3));
+  g.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
   g.setIndex(idx);
   g.computeVertexNormals();
   return g;
@@ -101,18 +103,58 @@ const grad = (u, phase = 0) => {
   return NAVY.clone().lerp(SKY, s);
 };
 
-const mat = new THREE.MeshPhysicalMaterial({
-  vertexColors: true,
-  roughness: P("rough", 0.22),
-  metalness: 0.0,
-  clearcoat: 1.0,
-  clearcoatRoughness: P("ccr", 0.06),
-  iridescence: P("irid", 0.25),
-  iridescenceIOR: 1.4,
-  sheen: P("sheen", 0.0),
-  sheenColor: new THREE.Color("#cfeaff"),
-  side: THREE.DoubleSide,
-});
+// Fine surface grain (sand-blasted metal): random speckle used as a
+// roughness and bump map. Repeats more along the loop than around the
+// profile so the grain stays roughly square on the surface.
+function grainTexture(size = 1024) {
+  const c = document.createElement("canvas");
+  c.width = c.height = size;
+  const ctx = c.getContext("2d");
+  const img = ctx.createImageData(size, size);
+  for (let i = 0; i < img.data.length; i += 4) {
+    const v = 150 + Math.random() * 105;
+    img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+    img.data[i + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  const t = new THREE.CanvasTexture(c);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(P("grainU", 14), P("grainV", 2));
+  t.anisotropy = 8;
+  return t;
+}
+
+// finish=satin (default): satin metal with fine grain, like Fin's renders.
+// finish=gloss: the original clear-coated ceramic look.
+const finish = q.get("finish") || "satin";
+const grain = grainTexture();
+const mat =
+  finish === "gloss"
+    ? new THREE.MeshPhysicalMaterial({
+        vertexColors: true,
+        roughness: P("rough", 0.22),
+        metalness: 0.0,
+        clearcoat: 1.0,
+        clearcoatRoughness: P("ccr", 0.06),
+        iridescence: P("irid", 0.25),
+        iridescenceIOR: 1.4,
+        sheen: P("sheen", 0.0),
+        sheenColor: new THREE.Color("#cfeaff"),
+        side: THREE.DoubleSide,
+      })
+    : new THREE.MeshPhysicalMaterial({
+        vertexColors: true,
+        metalness: P("metal", 0.6),
+        roughness: P("rough", 0.5),
+        roughnessMap: grain,
+        bumpMap: grain,
+        bumpScale: P("bump", 0.6),
+        clearcoat: P("cc", 0),
+        sheen: P("sheen", 0.35),
+        sheenRoughness: 0.8,
+        sheenColor: new THREE.Color("#d6efff"),
+        side: THREE.DoubleSide,
+      });
 
 const group = new THREE.Group();
 scene.add(group);
@@ -157,10 +199,40 @@ camera.position.set(0, 0, P("dist", 5.2));
 camera.lookAt(0, 0, 0);
 
 renderer.render(scene, camera);
+
+// Film grain, weighted by alpha so only the object gets it.
+const out = document.createElement("canvas");
+out.width = out.height = SIZE;
+const octx = out.getContext("2d");
+octx.drawImage(renderer.domElement, 0, 0);
+const filmGrain = P("film", finish === "gloss" ? 0 : 0.07);
+if (filmGrain > 0) {
+  // Grain specks are `grainPx` square so they survive the image being shown
+  // smaller than it is rendered.
+  const g = Math.max(1, Math.round(P("grainPx", 1)));
+  const px = octx.getImageData(0, 0, SIZE, SIZE);
+  const d = px.data;
+  for (let by = 0; by < SIZE; by += g)
+    for (let bx = 0; bx < SIZE; bx += g) {
+      const n0 = (Math.random() + Math.random() - 1) * 255 * filmGrain;
+      for (let y = by; y < Math.min(by + g, SIZE); y++)
+        for (let x = bx; x < Math.min(bx + g, SIZE); x++) {
+          const i = (y * SIZE + x) * 4;
+          if (d[i + 3] === 0) continue;
+          const n = n0 * (d[i + 3] / 255);
+          d[i] = Math.max(0, Math.min(255, d[i] + n));
+          d[i + 1] = Math.max(0, Math.min(255, d[i + 1] + n));
+          d[i + 2] = Math.max(0, Math.min(255, d[i + 2] + n));
+        }
+    }
+  octx.putImageData(px, 0, 0);
+}
+renderer.domElement.replaceWith(out);
+
 const status = document.getElementById("status");
 status.textContent = "done";
 if (save) {
-  const data = renderer.domElement.toDataURL("image/png");
+  const data = out.toDataURL("image/png");
   fetch(`/save?name=${save}`, { method: "POST", body: data })
     .then((r) => r.text())
     .then((t) => (status.textContent = t));

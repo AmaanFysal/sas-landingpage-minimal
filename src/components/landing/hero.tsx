@@ -33,6 +33,7 @@ export function Hero() {
         alt=""
         width={1380}
         height={1424}
+        quality={90}
         loading="eager"
         fetchPriority="high"
         sizes="(min-width: 1024px) 36vw, 80vw"

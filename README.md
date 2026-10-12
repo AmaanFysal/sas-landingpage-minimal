@@ -41,7 +41,7 @@ The ribbon images are rendered from `scripts/air-ribbon/render.html` (three.js, 
 node scripts/air-ribbon/server.mjs "$PWD/scripts/air-ribbon/out" 4319
 ```
 
-Open `http://localhost:4319/?shape=ribbon&size=1800&dist=6.4&env=0.8&irid=0&rough=0.14&rx=-0.6&ry=-0.5&rz=2.2&tm=neutral&sky=3cc4ff&save=air-ribbon-hero` in a browser. The PNG is saved to the `out` folder; trim it and convert it to WebP into `public/art/`. The closing image uses `rx=-1.15&ry=0.45&rz=0.9`.
+Open `http://localhost:4319/?shape=ribbon&size=1800&dist=6.4&env=1.3&keylight=2.6&metal=0.75&rough=0.32&bump=0.9&film=0.1&grainPx=2&rx=-0.6&ry=-0.5&rz=2.2&tm=neutral&sky=3cc4ff&save=air-ribbon-hero` in a browser. This is the satin, grainy metal finish; add `finish=gloss` for the original glossy version. The PNG is saved to the `out` folder; trim it and convert it to WebP into `public/art/`. The closing image uses `rx=-1.15&ry=0.45&rz=0.9`.
 
 ## Deploy to Vercel
 
