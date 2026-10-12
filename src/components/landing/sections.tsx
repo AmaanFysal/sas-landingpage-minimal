@@ -83,30 +83,32 @@ function ProofOfConcept() {
   );
 }
 
-/** 03 — square chalk tiles with captions beneath (Fin certification row). */
+/** 03 — text left, square chalk tiles right (Fin certification tiles, flywheel layout). */
 function Standards() {
   const marks = [ResetMark, WellMark];
+  const tiles = (
+    <ul className="grid grid-cols-2 gap-4">
+      {standards.badges.map((badge, i) => {
+        const Mark = marks[i];
+        return (
+          <li key={badge}>
+            <figure>
+              <div className="relative grid aspect-square place-items-center bg-chalk">
+                <CornerMarks />
+                <Mark className="w-[46%] text-ink/40" />
+              </div>
+              <figcaption className="t-label mt-3 normal-case">
+                <span className="text-ink/40">3.{i + 1}</span>&ensp;{badge}
+              </figcaption>
+            </figure>
+          </li>
+        );
+      })}
+    </ul>
+  );
   return (
-    <Reason id="standards" number="03" title={standards.title}>
+    <Reason id="standards" number="03" title={standards.title} aside={tiles}>
       <p className="t-body-lg mt-4 max-w-[572px]">{standards.body}</p>
-      <ul className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-5">
-        {standards.badges.map((badge, i) => {
-          const Mark = marks[i];
-          return (
-            <li key={badge}>
-              <figure>
-                <div className="relative grid aspect-square place-items-center bg-chalk">
-                  <CornerMarks />
-                  <Mark className="w-[46%] text-ink/40" />
-                </div>
-                <figcaption className="t-label mt-3 normal-case">
-                  <span className="text-ink/40">3.{i + 1}</span>&ensp;{badge}
-                </figcaption>
-              </figure>
-            </li>
-          );
-        })}
-      </ul>
     </Reason>
   );
 }
