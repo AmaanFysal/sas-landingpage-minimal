@@ -95,7 +95,7 @@ function Standards() {
             <figure>
               <div className="relative grid aspect-square place-items-center bg-chalk">
                 <CornerMarks />
-                <Mark className="w-[46%] text-ink/40" />
+                <Mark className="w-[80%] drop-shadow-[0_8px_18px_rgb(0_0_0/0.08)]" />
               </div>
               <figcaption className="t-label mt-3 normal-case">
                 <span className="text-ink/40">3.{i + 1}</span>&ensp;{badge}
